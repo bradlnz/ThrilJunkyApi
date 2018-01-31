@@ -1,0 +1,20 @@
+﻿using System;
+using NPoco;
+
+namespace ThrilJunkyServices.Models
+{
+    [TableName("Hint")]
+    [PrimaryKey("HintId")]
+    public class Hint
+    {
+        public int HintId { get; set; }
+
+        public int UserId { get; set; }
+
+        public int PostId { get; set; }
+
+        public string HintValue { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+    }
+}

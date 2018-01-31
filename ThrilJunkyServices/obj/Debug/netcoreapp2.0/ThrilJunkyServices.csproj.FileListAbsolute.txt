@@ -1,0 +1,11 @@
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.deps.json
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.runtimeconfig.json
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.runtimeconfig.dev.json
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.dll
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.pdb
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.csprojResolveAssemblyReference.cache
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.csproj.CoreCompileInputs.cache
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.AssemblyInfoInputs.cache
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.AssemblyInfo.cs
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.dll
+/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.pdb

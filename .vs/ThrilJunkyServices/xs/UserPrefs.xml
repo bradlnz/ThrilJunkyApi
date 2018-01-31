@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{A70505EF-7959-48B7-8AA9-15DDD8FB4CCA}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Controllers/LoginController.cs">
+    <Files>
+      <File FileName="ThrilJunkyServices/Startup.cs" Line="44" Column="28" />
+      <File FileName="ThrilJunkyServices/Program.cs" Line="1" Column="1" />
+      <File FileName="ThrilJunkyServices/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="ThrilJunkyServices/appsettings.json" Line="21" Column="4" />
+      <File FileName="ThrilJunkyServices/Properties/launchSettings.json" Line="22" Column="32" />
+      <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="17" Column="10" />
+      <File FileName="ThrilJunkyServices/Repositories/IPostRepository.cs" Line="10" Column="34" />
+      <File FileName="ThrilJunkyServices/Repositories/PostRepository.cs" Line="37" Column="17" />
+      <File FileName="ThrilJunkyServices/Models/Post.cs" Line="8" Column="18" />
+      <File FileName="ThrilJunkyServices/Models/Media.cs" Line="16" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/Hint.cs" Line="17" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/MediaType.cs" Line="11" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/VoteType.cs" Line="11" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/Vote.cs" Line="18" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/VoteCategory.cs" Line="11" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/User.cs" Line="13" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/Location.cs" Line="13" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/LocationType.cs" Line="16" Column="1" />
+      <File FileName="ThrilJunkyServices/Models/Tag.cs" Line="15" Column="9" />
+      <File FileName="ThrilJunkyServices/Controllers/LoginController.cs" Line="4" Column="35" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ThrilJunkyServices PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
