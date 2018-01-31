@@ -4,6 +4,7 @@ using NPoco;
 using ThrilJunkyServices.Models;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.WindowsAzure.Storage;
 
 namespace ThrilJunkyServices.Repositories
 {
@@ -55,6 +56,28 @@ namespace ThrilJunkyServices.Repositories
                 return db.SingleById<Media>(id);
             }
         }
+        
+        
+          public static string Upload(
+            string connectionString,
+            string containerName,
+            string blobName,
+            HttpPostedFileBase file)
+        {
+            var cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
+            var cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
+            var cloudBlobContainer = cloudBlobClient.GetContainerReference(containerName);
+            var cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(blobName);
+
+            using(var fileStream = file.InputStream)
+            {
+                cloudBlockBlob.Properties.ContentType = file.ContentType;
+                cloudBlockBlob.UploadFromStream(fileStream);
+            }
+
+            return cloudBlockBlob.Uri.AbsoluteUri;
+        }
+
 
     }
 }
