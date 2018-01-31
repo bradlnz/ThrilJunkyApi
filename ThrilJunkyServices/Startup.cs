@@ -27,7 +27,7 @@ namespace ThrilJunkyServices
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string domain = $"http://{Configuration["Auth:Domain"]}/";
+            string domain = Configuration["Auth:Domain"];
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
             .AddIdentityServerAuthentication(options =>
