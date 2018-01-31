@@ -34,7 +34,6 @@ namespace ThrilJunkyServices
             {
                 options.Authority = domain;
                 options.ApiName = "customAPI";
-                options.RequireHttpsMetadata = false;
             });
 
             services.AddMvc();
