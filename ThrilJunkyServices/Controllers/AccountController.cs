@@ -30,7 +30,7 @@ namespace ThrilJunkyServices.Controllers
 
             using (var client = new HttpClient())
             {
-                var req = new HttpRequestMessage(HttpMethod.Post, $"http://{Configuration["Auth:Domain"]}/connect/token");
+                var req = new HttpRequestMessage(HttpMethod.Post, $"{Configuration["Auth:Domain"]}/connect/token");
 
                 req.Content = new FormUrlEncodedContent(nvc);
 
@@ -59,7 +59,7 @@ namespace ThrilJunkyServices.Controllers
                 var data = JsonConvert.SerializeObject(newreg);
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
 
-                var res = await client.PostAsync($"http://{Configuration["Auth:Domain"]}/api/account/register", content);
+                var res = await client.PostAsync($"{Configuration["Auth:Domain"]}/api/account/register", content);
 
                 var result = await res.Content.ReadAsStringAsync();
 
