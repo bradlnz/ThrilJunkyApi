@@ -12,10 +12,12 @@ namespace ThrilJunkyServices.Controllers
     {
 
         private readonly IMediaRepository mediaRepository;
-
-        public MediaController(IMediaRepository _mediaRepository)
+        private  readonly IConfiguration config;
+        
+        public MediaController(IMediaRepository _mediaRepository, IConfiguration _config)
         {
             mediaRepository = _mediaRepository;
+            config = _config;
         }
 
         [HttpGet]
@@ -56,7 +58,7 @@ namespace ThrilJunkyServices.Controllers
       [HttpPost]
       public string UploadMedia(HttpPostedFileBase file)
       {
-        return mediaRepository.Upload(_config["ConnectionStrings:Blob"], _config["BlobContainer"], $"{DateTime.Now}.mp4", file);
+        return mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"], $"{DateTime.Now}.mp4", file);
       }
     }
 }
