@@ -7,6 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using ThrilJunkyServices.ViewModels;
+using System.Linq;
 
 namespace ThrilJunkyServices.Repositories
 {
@@ -28,18 +32,12 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
-        public void AddOrUpdate(Media media)
+        public async Task Add(Media media)
         {
 
             using (IDatabase db = Connection)
             {
-                db.BeginTransaction();
-                //Your CRUD operation here
-
-                db.Save<Media>(media);
-
-
-                db.CompleteTransaction();
+                await db.InsertAsync<Media>(media);
             }
         }
 
@@ -60,7 +58,7 @@ namespace ThrilJunkyServices.Repositories
         }
         
         
-          public string Upload(
+        public async Task<string> Upload(
             string connectionString,
             string containerName,
             string blobName,
@@ -70,16 +68,30 @@ namespace ThrilJunkyServices.Repositories
             var cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
             var cloudBlobContainer = cloudBlobClient.GetContainerReference(containerName);
             var cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(blobName);
-          
-            using(var fileStream = file.OpenReadStream())
+
+            using (var fileStream = file.OpenReadStream())
             {
                 cloudBlockBlob.Properties.ContentType = file.ContentType;
-                cloudBlockBlob.UploadFromStreamAsync(fileStream);
+                await cloudBlockBlob.UploadFromStreamAsync(fileStream);
             }
 
-            return cloudBlockBlob.Uri.AbsoluteUri;
-        }
+            var url = cloudBlockBlob.Uri.AbsoluteUri;
 
+            if (!string.IsNullOrWhiteSpace(url))
+            {
+                var media = new Media
+                {
+                    MediaUrl = url,
+                    MediaTypeId = 1,
+                    CreatedDate = DateTime.UtcNow,
+                };
+
+                await Add(media);
+
+            }
+
+            return url;
+        }
 
     }
 }

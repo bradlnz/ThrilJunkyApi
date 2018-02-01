@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using ThrilJunkyServices.Models;
+using ThrilJunkyServices.ViewModels;
 
 namespace ThrilJunkyServices.Repositories
 {
     public interface IMediaRepository
     {
-        void AddOrUpdate(Media post);
+        Task Add(Media post);
         List<Media> GetAll();
         Media GetByID(int id);
-        string Upload(
+        Task<string> Upload(
             string connectionString,
             string containerName,
             string blobName,

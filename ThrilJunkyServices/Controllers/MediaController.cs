@@ -51,7 +51,7 @@ namespace ThrilJunkyServices.Controllers
                     return BadRequest("Invalid State");
                 }
 
-                mediaRepository.AddOrUpdate(item);
+                mediaRepository.Add(item);
 
             }
             catch (Exception)
@@ -62,14 +62,15 @@ namespace ThrilJunkyServices.Controllers
         }
 
         [HttpPost("UploadMedia")]
-        public IActionResult UploadMedia(IFormFile file)
+        public async Task<IActionResult> UploadMedia(IFormFile file)
       {
             string extension = string.Empty;
             string fileName = file.FileName;
             int fileExtPos = fileName.LastIndexOf(".", StringComparison.Ordinal) + 1;
             extension = fileName.Substring(fileExtPos, fileName.Length - fileExtPos);
             
-            var url = mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"], $"{DateTime.Now.ToString("ddMMyyyyHHMMSS")}.{extension}", file);
+            var url = await mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"], $"{DateTime.Now.ToString("ddMMyyyyHHMMss")}.{extension}", file);
+
             return Ok(url);
         }
     }
