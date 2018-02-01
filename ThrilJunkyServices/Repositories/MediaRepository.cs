@@ -5,7 +5,7 @@ using ThrilJunkyServices.Models;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
-
+using Microsoft.AspNetCore.Http.Internal.FormFile;
 namespace ThrilJunkyServices.Repositories
 {
     public class MediaRepository : IMediaRepository
