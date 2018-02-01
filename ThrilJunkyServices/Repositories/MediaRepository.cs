@@ -1,5 +1,4 @@
 using System;
-using System.Web;
 using System.Collections.Generic;
 using NPoco;
 using ThrilJunkyServices.Models;
@@ -63,7 +62,7 @@ namespace ThrilJunkyServices.Repositories
             string connectionString,
             string containerName,
             string blobName,
-            HttpPostedFileBase file)
+            IFormFile file)
         {
             var cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
             var cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
