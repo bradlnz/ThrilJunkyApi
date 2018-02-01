@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ThrilJunkyServices.Models;
 using ThrilJunkyServices.Repositories;
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http.Internal.FormFile;
+
 namespace ThrilJunkyServices.Controllers
 {
     [Route("api/[controller]")]
