@@ -56,7 +56,7 @@ namespace ThrilJunkyServices.Controllers
         }
 
       [HttpPost]
-      public string UploadMedia(HttpPostedFileBase file)
+      public string UploadMedia(IFormFile file)
       {
         return mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"], $"{DateTime.Now}.mp4", file);
       }
