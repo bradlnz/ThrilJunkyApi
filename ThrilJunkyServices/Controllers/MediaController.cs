@@ -56,7 +56,7 @@ namespace ThrilJunkyServices.Controllers
       [HttpPost]
       public string UploadMedia(HttpPostedFileBase file)
       {
-        return mediaRepository.Upload(_config["ConnectionStrings:Blob"], _config["BlobContainerName"], $"{DateTime.Now}.mp4", file);
+        return mediaRepository.Upload(_config["ConnectionStrings:Blob"], _config["BlobContainer"], $"{DateTime.Now}.mp4", file);
       }
     }
 }
