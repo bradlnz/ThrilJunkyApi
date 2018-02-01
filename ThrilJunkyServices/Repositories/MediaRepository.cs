@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Http;
+
 namespace ThrilJunkyServices.Repositories
 {
     public class MediaRepository : IMediaRepository
@@ -58,7 +60,7 @@ namespace ThrilJunkyServices.Repositories
         }
         
         
-          public static string Upload(
+          public string Upload(
             string connectionString,
             string containerName,
             string blobName,
@@ -68,11 +70,11 @@ namespace ThrilJunkyServices.Repositories
             var cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
             var cloudBlobContainer = cloudBlobClient.GetContainerReference(containerName);
             var cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(blobName);
-
-            using(var fileStream = file.InputStream)
+          
+            using(var fileStream = file.OpenReadStream())
             {
                 cloudBlockBlob.Properties.ContentType = file.ContentType;
-                cloudBlockBlob.UploadFromStream(fileStream);
+                cloudBlockBlob.UploadFromStreamAsync(fileStream);
             }
 
             return cloudBlockBlob.Uri.AbsoluteUri;
