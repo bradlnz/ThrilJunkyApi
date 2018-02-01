@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ThrilJunkyServices.Models;
 using ThrilJunkyServices.Repositories;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Http.Internal.FormFile;
+using Microsoft.AspNetCore.Http.Internal;
 
 namespace ThrilJunkyServices.Controllers
 {
