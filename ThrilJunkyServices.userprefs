@@ -1,11 +1,15 @@
 ﻿<Properties StartupConfiguration="{A70505EF-7959-48B7-8AA9-15DDD8FB4CCA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Controllers/MediaController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Controllers/PostController.cs">
     <Files>
       <File FileName="ThrilJunkyServices/Repositories/MediaRepository.cs" Line="73" Column="11" />
-      <File FileName="ThrilJunkyServices/Controllers/MediaController.cs" Line="26" Column="9" />
+      <File FileName="ThrilJunkyServices/Controllers/MediaController.cs" Line="69" Column="1" />
       <File FileName="ThrilJunkyServices/Repositories/IPostRepository.cs" Line="10" Column="8" />
       <File FileName="ThrilJunkyServices/Repositories/IMediaRepository.cs" Line="15" Column="25" />
       <File FileName="ThrilJunkyServices/appsettings.json" Line="1" Column="1" />
+      <File FileName="ThrilJunkyServices/Program.cs" Line="1" Column="1" />
+      <File FileName="ThrilJunkyServices/Startup.cs" Line="62" Column="16" />
+      <File FileName="ThrilJunkyServices/Controllers/AccountController.cs" Line="1" Column="1" />
+      <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="9" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

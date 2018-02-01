@@ -6,11 +6,14 @@ using ThrilJunkyServices.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace ThrilJunkyServices.Controllers
 {
-    [Route("api/[controller]")]
     [Authorize]
+    [Route("api/[controller]")]
+    [Produces("application/json")]
+    [Consumes("application/json", "application/json-patch+json", "multipart/form-data")]
     public class MediaController : Controller
     {
 
@@ -58,10 +61,16 @@ namespace ThrilJunkyServices.Controllers
             return Ok(item);
         }
 
-      [HttpPost]
-      public string UploadMedia([FromBody]IFormFile file)
+        [HttpPost("UploadMedia")]
+        public IActionResult UploadMedia(IFormFile file)
       {
-        return mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"], $"{DateTime.Now}.mp4", file);
-      }
+            string extension = string.Empty;
+            string fileName = file.FileName;
+            int fileExtPos = fileName.LastIndexOf(".", StringComparison.Ordinal) + 1;
+            extension = fileName.Substring(fileExtPos, fileName.Length - fileExtPos);
+            
+            var url = mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"], $"{DateTime.Now.ToString("ddMMyyyyHHMMSS")}.{extension}", file);
+            return Ok(url);
+        }
     }
 }
