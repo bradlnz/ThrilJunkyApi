@@ -12,10 +12,12 @@ namespace ThrilJunkyServices.Repositories
         Task Add(Media post);
         List<Media> GetAll();
         Media GetByID(int id);
+        Task<MediaType> GetType(string extension);
         Task<string> Upload(
             string connectionString,
             string containerName,
             string blobName,
+            string extension,
             IFormFile file);
     }
 }

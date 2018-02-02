@@ -56,12 +56,39 @@ namespace ThrilJunkyServices.Repositories
                 return db.SingleById<Media>(id);
             }
         }
-        
+
+        public async Task<MediaType> GetType(string extension)
+        {
+            using (IDatabase db = Connection)
+            {
+                var results = await db.FetchAsync<MediaType>($"SELECT * FROM MediaType WHERE Type = '{extension}'");
+
+                if(!results.Any())
+                {
+                    var results2 = await db.FetchAsync<MediaType>($"SELECT * FROM MediaType");
+
+                    var mediaType = new MediaType()
+                    {
+                        MediaTypeId = results2.Last().MediaTypeId + 1,
+                        Type = extension
+                    };
+
+                    await db.InsertAsync<MediaType>(mediaType);
+
+                    var results3 = await db.FetchAsync<MediaType>($"SELECT * FROM MediaType WHERE MediaTypeId = '{mediaType.MediaTypeId}'");
+
+                    return results3.First();;
+
+                }
+                return results.First();
+            }
+        }
         
         public async Task<string> Upload(
             string connectionString,
             string containerName,
             string blobName,
+            string extension,
             IFormFile file)
         {
             var cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
@@ -79,15 +106,18 @@ namespace ThrilJunkyServices.Repositories
 
             if (!string.IsNullOrWhiteSpace(url))
             {
-                var media = new Media
-                {
-                    MediaUrl = url,
-                    MediaTypeId = 1,
-                    CreatedDate = DateTime.UtcNow,
-                };
 
-                await Add(media);
+                var type = await GetType(extension);
+                    
+                 var media = new Media
+                   {
+                       MediaUrl = url,
+                    MediaTypeId = type.MediaTypeId,
+                       CreatedDate = DateTime.UtcNow,
+                   };
 
+                    await Add(media);
+ 
             }
 
             return url;
