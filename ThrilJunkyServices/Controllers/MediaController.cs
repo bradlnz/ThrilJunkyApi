@@ -69,10 +69,10 @@ namespace ThrilJunkyServices.Controllers
             int fileExtPos = fileName.LastIndexOf(".", StringComparison.Ordinal) + 1;
             extension = fileName.Substring(fileExtPos, fileName.Length - fileExtPos);
             
-            var url = await mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"],
+            var media = await mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"],
                                                    $"{DateTime.Now.ToString("ddMMyyyyHHMMss")}.{extension}", extension, file);
 
-            return Ok(url);
+            return Ok(media);
         }
     }
 }

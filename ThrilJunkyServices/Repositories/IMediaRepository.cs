@@ -13,7 +13,7 @@ namespace ThrilJunkyServices.Repositories
         List<Media> GetAll();
         Media GetByID(int id);
         Task<MediaType> GetType(string extension);
-        Task<string> Upload(
+        Task<Media> Upload(
             string connectionString,
             string containerName,
             string blobName,

@@ -69,7 +69,6 @@ namespace ThrilJunkyServices.Repositories
 
                     var mediaType = new MediaType()
                     {
-                        MediaTypeId = results2.Last().MediaTypeId + 1,
                         Type = extension
                     };
 
@@ -77,14 +76,14 @@ namespace ThrilJunkyServices.Repositories
 
                     var results3 = await db.FetchAsync<MediaType>($"SELECT * FROM MediaType WHERE MediaTypeId = '{mediaType.MediaTypeId}'");
 
-                    return results3.First();;
+                    return results3.First();
 
                 }
                 return results.First();
             }
         }
         
-        public async Task<string> Upload(
+        public async Task<Media> Upload(
             string connectionString,
             string containerName,
             string blobName,
@@ -117,10 +116,11 @@ namespace ThrilJunkyServices.Repositories
                    };
 
                     await Add(media);
- 
+
+                return media;
             }
 
-            return url;
+            return new Media();
         }
 
     }
