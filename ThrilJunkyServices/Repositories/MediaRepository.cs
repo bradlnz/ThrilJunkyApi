@@ -142,7 +142,7 @@ namespace ThrilJunkyServices.Repositories
             var locator = await _client.CreateLocator(policy.Id, outputAsset.First().Id, DateTime.Now, 2);
 
            
-            var url = $"{locator.Path}{asset.Name.Replace(".mp4", ".ism")}/manifest(format=m3u8-aapl-v3)";
+            var url = $"{locator.Path}{asset.Name.Replace(".mp4", ".ism")}/manifest";
 
         
             if (!string.IsNullOrWhiteSpace(url))
