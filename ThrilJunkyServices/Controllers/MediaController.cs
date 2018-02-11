@@ -6,6 +6,10 @@ using ThrilJunkyServices.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Threading;
+using Azure.MediaServices.Core.Assets;
+using Azure.MediaServices.Core;
 using System.Threading.Tasks;
 
 namespace ThrilJunkyServices.Controllers
@@ -18,8 +22,9 @@ namespace ThrilJunkyServices.Controllers
     {
 
         private readonly IMediaRepository mediaRepository;
+   
         private  readonly IConfiguration config;
-        
+
         public MediaController(IMediaRepository _mediaRepository, IConfiguration _config)
         {
             mediaRepository = _mediaRepository;
@@ -62,17 +67,20 @@ namespace ThrilJunkyServices.Controllers
         }
 
         [HttpPost("UploadMedia")]
-        public async Task<IActionResult> UploadMedia(IFormFile file)
+        public async Task<Media> UploadMedia(IFormFile file)
       {
             string extension = string.Empty;
             string fileName = file.FileName;
             int fileExtPos = fileName.LastIndexOf(".", StringComparison.Ordinal) + 1;
             extension = fileName.Substring(fileExtPos, fileName.Length - fileExtPos);
-            
+     
+           
             var media = await mediaRepository.Upload(config["ConnectionStrings:Blob"], config["BlobContainer"],
-                                                   $"{DateTime.Now.ToString("ddMMyyyyHHMMss")}.{extension}", extension, file);
+             $"{DateTime.Now.ToString("ddMMyyyyHHMMss")}.{extension}", extension, file);
 
-            return Ok(media);
+            return media;
         }
+     
+
     }
 }

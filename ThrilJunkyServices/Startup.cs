@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Azure.MediaServices.Core;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -41,7 +42,9 @@ namespace ThrilJunkyServices
             services.AddSingleton(_ => Configuration);
 
             services.AddSingleton<IPostRepository, PostRepository>();
+
              services.AddSingleton<IMediaRepository, MediaRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

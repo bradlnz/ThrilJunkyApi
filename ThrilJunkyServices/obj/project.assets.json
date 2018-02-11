@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "Azure.MediaServices.Core/0.0.6": {
+        "type": "package",
+        "dependencies": {
+          "System.IdentityModel.Tokens.Jwt": "5.1.4",
+          "WindowsAzure.Storage": "8.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Azure.MediaServices.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.MediaServices.Core.dll": {}
+        }
+      },
       "IdentityModel/3.0.0": {
         "type": "package",
         "dependencies": {
@@ -2711,6 +2724,21 @@
           }
         }
       },
+      "Microsoft.WindowsAzure.SDK/2.9.0": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.WindowsAzure.Diagnostics.dll": {},
+          "lib/Microsoft.WindowsAzure.ServiceRuntime.dll": {},
+          "lib/WindowsAzureEventSource.dll": {},
+          "lib/WindowsAzureTelemetryEvents.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAzure.Diagnostics.dll": {},
+          "lib/Microsoft.WindowsAzure.ServiceRuntime.dll": {},
+          "lib/WindowsAzureEventSource.dll": {},
+          "lib/WindowsAzureTelemetryEvents.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -4808,7 +4836,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "WindowsAzure.Storage/8.1.4": {
+      "WindowsAzure.Storage/8.4.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Data.OData": "5.8.2",
@@ -4826,6 +4854,16 @@
     }
   },
   "libraries": {
+    "Azure.MediaServices.Core/0.0.6": {
+      "sha512": "BbaVDiuMp0zFlkZhZLbdmKBRzal7Ks+3rXDQl+sDiGdnlWDBIc+maNWHjdShLnicmI1XFMweTGe44y6lZQveWw==",
+      "type": "package",
+      "path": "azure.mediaservices.core/0.0.6",
+      "files": [
+        "azure.mediaservices.core.0.0.6.nupkg.sha512",
+        "azure.mediaservices.core.nuspec",
+        "lib/netstandard2.0/Azure.MediaServices.Core.dll"
+      ]
+    },
     "IdentityModel/3.0.0": {
       "sha512": "EKMOOUUqDzBR3goiA8eWJ1aQBz1AMfKVxxR7XnzAf5qq2k9vr6GT91SyHmzC14KINpNNJOrbmowXf5S04gQ0ZA==",
       "type": "package",
@@ -7514,6 +7552,19 @@
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Microsoft.WindowsAzure.SDK/2.9.0": {
+      "sha512": "DddpLvVtIfg/1xjHvuRNOGkwUrxB5/w37OzNLMZ6o0svaT7BE0uw6XWjjvY0V68I6JoojcrV+QXo5AgIhu9SMA==",
+      "type": "package",
+      "path": "microsoft.windowsazure.sdk/2.9.0",
+      "files": [
+        "lib/Microsoft.WindowsAzure.Diagnostics.dll",
+        "lib/Microsoft.WindowsAzure.ServiceRuntime.dll",
+        "lib/WindowsAzureEventSource.dll",
+        "lib/WindowsAzureTelemetryEvents.dll",
+        "microsoft.windowsazure.sdk.2.9.0.nupkg.sha512",
+        "microsoft.windowsazure.sdk.nuspec"
       ]
     },
     "NETStandard.Library/2.0.0": {
@@ -12702,10 +12753,10 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "WindowsAzure.Storage/8.1.4": {
-      "sha512": "W6ZZ0/o7+3Qb77mRAQyLjPudHG3OMeeQ4p9yY13PUdJArmRCx2cLMm5F4tpIjJXxzHC0ew0oK7DMDGILMdfCnw==",
+    "WindowsAzure.Storage/8.4.0": {
+      "sha512": "2BzIL/b/2d86+kd74xRoNqz97VVnNv0+aaggSCR6k78nN2UVKWudMe2kxi6gmimGcJqq8BkFCavXhS8xF1INvg==",
       "type": "package",
-      "path": "windowsazure.storage/8.1.4",
+      "path": "windowsazure.storage/8.4.0",
       "files": [
         "lib/net45/Microsoft.WindowsAzure.Storage.dll",
         "lib/net45/Microsoft.WindowsAzure.Storage.pdb",
@@ -12720,17 +12771,19 @@
         "lib/wp8/Microsoft.WindowsAzure.Storage.pdb",
         "lib/wpa/Microsoft.WindowsAzure.Storage.dll",
         "lib/wpa/Microsoft.WindowsAzure.Storage.pdb",
-        "windowsazure.storage.8.1.4.nupkg.sha512",
+        "windowsazure.storage.8.4.0.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "Azure.MediaServices.Core >= 0.0.6",
       "IdentityServer4.AccessTokenValidation >= 2.3.0",
       "Microsoft.AspNetCore.All >= 2.0.5",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
+      "Microsoft.WindowsAzure.SDK >= 2.9.0",
       "NPoco >= 3.9.3"
     ]
   },
@@ -12794,6 +12847,14 @@
           "IdentityServer4.AccessTokenValidation": {
             "target": "Package",
             "version": "2.3.0"
+          },
+          "Microsoft.WindowsAzure.SDK": {
+            "target": "Package",
+            "version": "2.9.0"
+          },
+          "Azure.MediaServices.Core": {
+            "target": "Package",
+            "version": "0.0.6"
           }
         },
         "imports": [
@@ -12803,5 +12864,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.WindowsAzure.SDK 2.9.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.WindowsAzure.SDK",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }

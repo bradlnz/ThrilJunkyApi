@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ThrilJunkyServices.ViewModels;
 using System.Linq;
+using Azure.MediaServices.Core;
+using Microsoft.WindowsAzure.Storage.Auth;
+using System.Threading;
+using Azure.MediaServices.Core.Jobs;
+using Azure.MediaServices.Core.Assets;
 
 namespace ThrilJunkyServices.Repositories
 {
@@ -18,10 +23,12 @@ namespace ThrilJunkyServices.Repositories
     {
       
         private  readonly IConfiguration _config;
+        private readonly IAzureMediaServiceClient _client;
 
         public MediaRepository(IConfiguration config) 
         {
             _config = config;
+            _client = new AzureMediaServiceClient(config["ClientId"], config["ClientKey"], config["MediaServicesRestApi"], config["TenantDomain"]);
         }
 
         public IDatabase Connection
@@ -101,8 +108,43 @@ namespace ThrilJunkyServices.Repositories
                 await cloudBlockBlob.UploadFromStreamAsync(fileStream);
             }
 
-            var url = cloudBlockBlob.Uri.AbsoluteUri;
+            StorageCredentials storageCredentials = new StorageCredentials(_config["StorageAccountName"], _config["StorageAccountKey"]);
 
+            await _client.InitializeAsync();
+
+            var asset = await _client.CreateFromBlobAsync(cloudBlockBlob, storageCredentials, CancellationToken.None);
+
+            List<Asset> assets = new List<Asset>();
+
+            assets.Add(asset);
+
+            JobTask task = new JobTask();
+
+            task.Name = "Adaptive Streaming";
+            task.Configuration = "Adaptive Streaming";
+            task.MediaProcessorId = "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56";
+            task.TaskBody = "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(1)</outputAsset></taskBody>";
+            List<JobTask> tasks = new List<JobTask>();
+
+            tasks.Add(task);
+
+           
+            var job = new Job("Media Encoder Standard", assets.ToArray(), tasks.ToArray());
+
+
+            var job2 = await _client.CreateJob(job);
+
+            var outputAsset = await _client.GetJobOutputAsset(job2.Id);
+
+            var policy = await _client.CreateAccessPolicy("DownloadPolicy", 300, 1);
+
+           
+            var locator = await _client.CreateLocator(policy.Id, outputAsset.First().Id, DateTime.Now, 2);
+
+           
+            var url = $"{locator.Path}{asset.Name.Replace(".mp4", ".ism")}/manifest(format=m3u8-aapl-v3)";
+
+        
             if (!string.IsNullOrWhiteSpace(url))
             {
 

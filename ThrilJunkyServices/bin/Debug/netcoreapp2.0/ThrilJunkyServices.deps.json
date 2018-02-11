@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "05217990d3c76cfea043a4b678289a83e550a6d3"
+    "signature": "7bd0646c50032f70e0e044cecfb4668bbb05c179"
   },
   "compilationOptions": {
     "defines": [
@@ -23,10 +23,12 @@
     ".NETCoreApp,Version=v2.0": {
       "ThrilJunkyServices/1.0.0": {
         "dependencies": {
+          "Azure.MediaServices.Core": "0.0.6",
           "IdentityServer4.AccessTokenValidation": "2.3.0",
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.1",
           "Microsoft.NETCore.App": "2.0.0",
+          "Microsoft.WindowsAzure.SDK": "2.9.0",
           "NPoco": "3.9.3"
         },
         "runtime": {
@@ -34,6 +36,18 @@
         },
         "compile": {
           "ThrilJunkyServices.dll": {}
+        }
+      },
+      "Azure.MediaServices.Core/0.0.6": {
+        "dependencies": {
+          "System.IdentityModel.Tokens.Jwt": "5.1.4",
+          "WindowsAzure.Storage": "8.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.MediaServices.Core.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/Azure.MediaServices.Core.dll": {}
         }
       },
       "IdentityModel/3.0.0": {
@@ -615,7 +629,7 @@
       "Microsoft.AspNetCore.DataProtection.AzureStorage/2.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection": "2.0.1",
-          "WindowsAzure.Storage": "8.1.4"
+          "WindowsAzure.Storage": "8.4.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.DataProtection.AzureStorage.dll": {}
@@ -2358,6 +2372,20 @@
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
+      "Microsoft.WindowsAzure.SDK/2.9.0": {
+        "runtime": {
+          "lib/Microsoft.WindowsAzure.Diagnostics.dll": {},
+          "lib/Microsoft.WindowsAzure.ServiceRuntime.dll": {},
+          "lib/WindowsAzureEventSource.dll": {},
+          "lib/WindowsAzureTelemetryEvents.dll": {}
+        },
+        "compile": {
+          "lib/Microsoft.WindowsAzure.Diagnostics.dll": {},
+          "lib/Microsoft.WindowsAzure.ServiceRuntime.dll": {},
+          "lib/WindowsAzureEventSource.dll": {},
+          "lib/WindowsAzureTelemetryEvents.dll": {}
+        }
+      },
       "Newtonsoft.Json/10.0.3": {
         "dependencies": {
           "Microsoft.CSharp": "4.4.0",
@@ -3847,7 +3875,7 @@
           "System.Xml.XPath": "4.3.0"
         }
       },
-      "WindowsAzure.Storage/8.1.4": {
+      "WindowsAzure.Storage/8.4.0": {
         "dependencies": {
           "Microsoft.Data.OData": "5.8.2",
           "NETStandard.Library": "2.0.0",
@@ -4044,6 +4072,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Azure.MediaServices.Core/0.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BbaVDiuMp0zFlkZhZLbdmKBRzal7Ks+3rXDQl+sDiGdnlWDBIc+maNWHjdShLnicmI1XFMweTGe44y6lZQveWw==",
+      "path": "azure.mediaservices.core/0.0.6",
+      "hashPath": "azure.mediaservices.core.0.0.6.nupkg.sha512"
     },
     "IdentityModel/3.0.0": {
       "type": "package",
@@ -5200,6 +5235,13 @@
       "path": "microsoft.win32.registry/4.4.0",
       "hashPath": "microsoft.win32.registry.4.4.0.nupkg.sha512"
     },
+    "Microsoft.WindowsAzure.SDK/2.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DddpLvVtIfg/1xjHvuRNOGkwUrxB5/w37OzNLMZ6o0svaT7BE0uw6XWjjvY0V68I6JoojcrV+QXo5AgIhu9SMA==",
+      "path": "microsoft.windowsazure.sdk/2.9.0",
+      "hashPath": "microsoft.windowsazure.sdk.2.9.0.nupkg.sha512"
+    },
     "Newtonsoft.Json/10.0.3": {
       "type": "package",
       "serviceable": true,
@@ -6075,12 +6117,12 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
     },
-    "WindowsAzure.Storage/8.1.4": {
+    "WindowsAzure.Storage/8.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-W6ZZ0/o7+3Qb77mRAQyLjPudHG3OMeeQ4p9yY13PUdJArmRCx2cLMm5F4tpIjJXxzHC0ew0oK7DMDGILMdfCnw==",
-      "path": "windowsazure.storage/8.1.4",
-      "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
+      "sha512": "sha512-2BzIL/b/2d86+kd74xRoNqz97VVnNv0+aaggSCR6k78nN2UVKWudMe2kxi6gmimGcJqq8BkFCavXhS8xF1INvg==",
+      "path": "windowsazure.storage/8.4.0",
+      "hashPath": "windowsazure.storage.8.4.0.nupkg.sha512"
     },
     "Microsoft.NETCore.App/2.0.0": {
       "type": "package",
