@@ -7,15 +7,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using ThrilJunkyServices.Repositories;
 
 namespace ThrilJunkyServices.Controllers
 {
     public class AccountController : Controller
     {
         IConfiguration Configuration { get; }
-        public AccountController(IConfiguration configuration)
+        IUserRepository UserRepository { get; set; }
+
+        public AccountController(IConfiguration configuration, IUserRepository _UserRepository)
         {
             Configuration = configuration;
+            UserRepository = _UserRepository;
         }
 
         public async Task<Result> Login([FromBody] UserModel model)
@@ -63,8 +67,13 @@ namespace ThrilJunkyServices.Controllers
 
                 var result = await res.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<RegResult>(result);
+                var regresult = JsonConvert.DeserializeObject<RegResult>(result);
 
+                if (regresult.succeeded)
+                {
+                    await UserRepository.Add(new Models.User() { Email = model.Email, Username = model.Username });
+                }
+                return regresult;
             }
         }
 
