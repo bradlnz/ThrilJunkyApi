@@ -44,7 +44,8 @@ namespace ThrilJunkyServices
             services.AddSingleton<IPostRepository, PostRepository>();
 
              services.AddSingleton<IMediaRepository, MediaRepository>();
-
+            
+             services.AddSingleton<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
