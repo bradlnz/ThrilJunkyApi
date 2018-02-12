@@ -25,6 +25,13 @@ namespace ThrilJunkyServices.Controllers
             return Ok(postRepository.GetAll());
         }
 
+        [HttpGet]
+
+        public IActionResult GetAllByLocationOrderByCreatedDate(float lat, float lng, int radius)
+        {
+            return Ok(postRepository.GetAllByLocationOrderByCreatedDate(lat, lng, radius));
+        }
+
         [HttpGet("{Id}")]
         public Post GetItem(int id)
         {
