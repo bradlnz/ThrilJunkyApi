@@ -24,7 +24,7 @@ namespace ThrilJunkyServices
         }
 
         public IConfiguration Configuration { get; }
-      
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -43,9 +43,15 @@ namespace ThrilJunkyServices
 
             services.AddSingleton<IPostRepository, PostRepository>();
 
-             services.AddSingleton<IMediaRepository, MediaRepository>();
-            
-             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IMediaRepository, MediaRepository>();
+
+            services.AddSingleton<IUserRepository, UserRepository>();
+
+            services.AddSingleton<ITagRepository, TagRepository>();
+
+            services.AddSingleton<IHintRepository, HintRepository>();
+
+            services.AddSingleton<ILocationRepository, LocationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
