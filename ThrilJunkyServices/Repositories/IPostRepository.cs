@@ -10,5 +10,6 @@ namespace ThrilJunkyServices.Repositories
         void AddOrUpdate(Post post);
         List<Post> GetAll();
         Post GetByID(int id);
+        List<Post> GetAllByLocationOrderByCreatedDate(float latitude, float longitude, int radius);
     }
 }

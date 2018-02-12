@@ -48,6 +48,14 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
+        public List<Post> GetAllByLocationOrderByCreatedDate(float latitude, float longitude, int radius)
+        {
+            using(IDatabase db = Connection)
+            {
+                return db.Fetch<Post>($"SELECT *.p, *.l FROM Post p INNER JOIN Location l on l.LocationId = p.LocationId WHERE dbo.GetDistanceBetween({latitude}, {longitude}, l.latitude, l.longitude) <= {radius};");
+            }
+        }
+
         public Post GetByID(int id)
         {
             using (IDatabase db = Connection)
