@@ -46,17 +46,11 @@ namespace ThrilJunkyServices.Controllers
         {
             try
             {
-                if (item == null || !ModelState.IsValid)
-                {
-                    return BadRequest("Invalid State");
-                }
-
                 await locationRepository.Add(item);
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest("Error while creating");
+                return BadRequest(ex.GetBaseException().Message);
             }
             return Ok(item);
         }
