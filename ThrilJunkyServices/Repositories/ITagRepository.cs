@@ -7,8 +7,9 @@ namespace ThrilJunkyServices.Repositories
 {
     public interface ITagRepository
     {
-        Task Add(Tag location);
+        Task<Tag> Add(Tag tag);
         List<Tag> GetAll();
-        Tag GetByID(int id); 
+        Tag GetByID(int id);
+        Task AddPostTag(PostTag postTag)
     }
 }

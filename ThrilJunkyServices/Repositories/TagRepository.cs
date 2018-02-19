@@ -32,12 +32,31 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
-        public async Task Add(Tag tag)
+        public async Task<Tag> Add(Tag tag)
         {
 
             using (IDatabase db = Connection)
             {
-                await db.InsertAsync<Tag>(tag);
+                var existing = await db.FetchAsync<Tag>($"SELECT * FROM Tag WHERE Text LIKE '%{tag.Text}%'");
+
+                if (existing == null || !existing.Any())
+                {
+                    await db.InsertAsync<Tag>(tag);
+
+                    var item = await db.FetchAsync<Tag>($"SELECT * FROM Tag WHERE TagId = {tag.TagId}");
+
+                    return item.First();
+                }
+
+                return existing.First();
+            }
+        }
+
+        public async Task AddPostTag(PostTag postTag)
+        {
+            using (IDatabase db = Connection)
+            {
+                await db.InsertAsync<PostTag>(postTag);
             }
         }
 

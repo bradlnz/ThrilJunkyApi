@@ -60,5 +60,25 @@ namespace ThrilJunkyServices.Controllers
             }
             return Ok(item);
         }
+
+
+        [HttpPost]
+        public IActionResult AddPost([FromBody] PostTag item)
+        {
+            try
+            {
+                if(item == null || !ModelState.IsValid)
+                {
+                    return BadRequest("Error while creating");
+                }
+
+                tagRepository.AddPostTag(item);
+
+            } catch(Exception ex)
+            {
+                return BadRequest("Error while creating");
+            }
+            return Ok(item);
+        }
     }
 }

@@ -9,11 +9,9 @@ namespace ThrilJunkyServices.Models
     {
         public int TagId { get; set; }
 
-        public int? LocationId { get; set; }
+        public string Text { get; set; }
 
-        public int PostId { get; set; }
-
-        public string TagValue { get; set; }
+        public DateTime CreatedDate { get; set; }
 
     }
 }
