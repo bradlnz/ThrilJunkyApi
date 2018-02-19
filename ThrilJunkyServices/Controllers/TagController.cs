@@ -42,35 +42,36 @@ namespace ThrilJunkyServices.Controllers
         }
 
         [HttpPost]
-        public IActionResult Modify([FromBody]Tag item)
+        public async Task<IActionResult> Modify([FromBody]Tag item)
         {
             try
             {
-               
-                tagRepository.Add(item);
+                var res = await tagRepository.Add(item);
+
+               return Ok(res);
 
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.GetBaseException().Message);
             }
-            return Ok(item);
+           
         }
 
-
         [HttpPost]
-        public IActionResult AddPost([FromBody] PostTag item)
+        [Route("addposttag")]
+        public async Task Modify([FromBody]PostTag item)
         {
             try
             {
-               
-                tagRepository.AddPostTag(item);
+             await tagRepository.AddPostTag(item);
 
-            } catch(Exception ex)
-            {
-                return BadRequest(ex.GetBaseException().Message);
             }
-            return Ok(item);
+            catch (Exception ex)
+            {
+               
+            }
+
         }
     }
 }
