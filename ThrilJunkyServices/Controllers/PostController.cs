@@ -26,11 +26,11 @@ namespace ThrilJunkyServices.Controllers
             return Ok(postRepository.GetAll());
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("GetAllByLocationOrderByCreatedDate")]
-        public IActionResult GetAllByLocationOrderByCreatedDate(float lat, float lng, int radius)
+        public IActionResult GetAllByLocationOrderByCreatedDate([FromBody] LocationSearch item)
         {
-            return Ok(postRepository.GetAllByLocationOrderByCreatedDate(lat, lng, radius).ToList().GroupBy(a => a.LocationId));
+            return Ok(postRepository.GetAllByLocationOrderByCreatedDate(item.lat,item.lng, item.radius).ToList().GroupBy(a => a.LocationId));
         }
 
         [HttpGet("{Id}")]
@@ -55,6 +55,14 @@ namespace ThrilJunkyServices.Controllers
                 return BadRequest(ex.GetBaseException().Message);
             }
             return Ok(item);
+        }
+
+
+        public class LocationSearch
+        {
+            public float lat { get; set; }
+            public float lng { get; set; }
+            public int radius { get; set; }
         }
 
     }
