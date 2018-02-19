@@ -46,13 +46,15 @@ namespace ThrilJunkyServices.Controllers
         {
             try
             {
-                await locationRepository.Add(item);
+               var res = await locationRepository.Add(item);
+
+                return Ok(res);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.GetBaseException().Message);
             }
-            return Ok(item);
+            
         }
 
 
