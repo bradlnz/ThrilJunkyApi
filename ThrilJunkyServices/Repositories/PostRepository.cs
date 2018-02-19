@@ -48,6 +48,7 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
+
         public List<Post> GetAllByLocationOrderByCreatedDate(float latitude, float longitude, int radius)
         {
             using(IDatabase db = Connection)

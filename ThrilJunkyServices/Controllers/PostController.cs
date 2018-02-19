@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ThrilJunkyServices.Models;
@@ -26,10 +27,10 @@ namespace ThrilJunkyServices.Controllers
         }
 
         [HttpGet]
-
+        [Route("GetAllByLocationOrderByCreatedDate")]
         public IActionResult GetAllByLocationOrderByCreatedDate(float lat, float lng, int radius)
         {
-            return Ok(postRepository.GetAllByLocationOrderByCreatedDate(lat, lng, radius));
+            return Ok(postRepository.GetAllByLocationOrderByCreatedDate(lat, lng, radius).ToList().GroupBy(a => a.LocationId));
         }
 
         [HttpGet("{Id}")]
