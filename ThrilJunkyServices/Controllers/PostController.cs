@@ -13,10 +13,12 @@ namespace ThrilJunkyServices.Controllers
     {
 
         private readonly IPostRepository postRepository;
+        private readonly IMediaRepository mediaRepository;
 
-        public PostController(IPostRepository _postRepository)
+        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository)
         {
             postRepository = _postRepository;
+            mediaRepository = _mediaRepository;
         }
 
         [HttpGet]
@@ -30,7 +32,16 @@ namespace ThrilJunkyServices.Controllers
         [Route("GetAllByLocationOrderByCreatedDate")]
         public IActionResult GetAllByLocationOrderByCreatedDate([FromBody] LocationSearch item)
         {
-            return Ok(postRepository.GetAllByLocationOrderByCreatedDate(item.lat,item.lng, item.radius).ToList().GroupBy(a => a.LocationId));
+            var items = postRepository.GetAllByLocationOrderByCreatedDate(item.lat, item.lng, item.radius);
+
+            foreach(var it in items)
+            {
+               var media = mediaRepository.GetByID(it.MediaId);
+
+                it.MediaUrl = media.MediaUrl;
+            }
+
+            return Ok(items.ToList().GroupBy(a => a.LocationId));
         }
 
         [HttpGet("{Id}")]

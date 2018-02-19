@@ -26,5 +26,8 @@ namespace ThrilJunkyServices.Models
 
         //check if flagged - Set by ADMIN
         public bool? IsFlagged { get; set; }
+
+        [Ignore]
+        public string MediaUrl { get; set; }
     }
 }
