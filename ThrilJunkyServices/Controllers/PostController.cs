@@ -28,6 +28,8 @@ namespace ThrilJunkyServices.Controllers
             return Ok(postRepository.GetAll());
         }
 
+
+
         [HttpPost]
         [Route("GetAllByLocationOrderByCreatedDate")]
         public IActionResult GetAllByLocationOrderByCreatedDate([FromBody] LocationSearch item)

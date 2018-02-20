@@ -77,11 +77,42 @@ namespace ThrilJunkyServices.Controllers
             }
         }
 
+
+        public async Task<UserGen> GetUserAsync(string token)
+        {
+            var nvc = new List<KeyValuePair<string, string>>();
+            nvc.Add(new KeyValuePair<string, string>("authorization", $"bearer {token}"));
+          
+
+            using (var client = new HttpClient())
+            {
+                var req = new HttpRequestMessage(HttpMethod.Get, $"{Configuration["Auth:Domain"]}/connect/userinfo");
+
+                req.Content = new FormUrlEncodedContent(nvc);
+
+                var res = await client.SendAsync(req);
+
+                var result = await res.Content.ReadAsStringAsync();
+
+                return JsonConvert.DeserializeObject<UserGen>(result);
+
+            }
+        }
+
         public class UserModel
         {
             public string Username { get; set; }
             public string Password { get; set; }
         }
+
+        public class UserGen
+        {
+            public string sub { get; set; }
+            public string name { get; set; }
+            public string given_name { get; set; }
+            public string fmily_name { get; set; }
+            public string[] roles { get; set; }
+         }
 
         public class UserRegisterModel : UserModel
         {
