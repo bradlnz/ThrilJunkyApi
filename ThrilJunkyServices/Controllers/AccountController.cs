@@ -32,7 +32,7 @@ namespace ThrilJunkyServices.Controllers
             nvc.Add(new KeyValuePair<string, string>("password", model.Password));
             nvc.Add(new KeyValuePair<string, string>("client_id", "resourceOwner"));
             nvc.Add(new KeyValuePair<string, string>("client_secret", "secret"));
-            nvc.Add(new KeyValuePair<string, string>("scope", "api1"));
+            nvc.Add(new KeyValuePair<string, string>("scope", "openid profile"));
 
             using (var client = new HttpClient())
             {
@@ -82,7 +82,7 @@ namespace ThrilJunkyServices.Controllers
         }
 
 
-        public async Task<UserGen> GetUserAsync(string token)
+        public async Task<Models.User> GetUser([FromBody]string token)
         {
  
 
@@ -96,8 +96,9 @@ namespace ThrilJunkyServices.Controllers
 
                 var result = await res.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<UserGen>(result);
+                var userDetails  = JsonConvert.DeserializeObject<UserGen>(result);
 
+               return UserRepository.GetAll().FirstOrDefault(a => a.Username == userDetails.name);
             }
         }
 
