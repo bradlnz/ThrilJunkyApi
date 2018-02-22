@@ -29,5 +29,8 @@ namespace ThrilJunkyServices.Models
 
         [Ignore]
         public string MediaUrl { get; set; }
+
+        [Ignore]
+        public string Username { get; set; }
     }
 }
