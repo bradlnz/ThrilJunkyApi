@@ -14,11 +14,13 @@ namespace ThrilJunkyServices.Controllers
 
         private readonly IPostRepository postRepository;
         private readonly IMediaRepository mediaRepository;
+        private readonly IUserRepository userRepository;
 
-        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository)
+        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository)
         {
             postRepository = _postRepository;
             mediaRepository = _mediaRepository;
+            userRepository = _userRepository;
         }
 
         [HttpGet]
@@ -41,6 +43,8 @@ namespace ThrilJunkyServices.Controllers
                var media = mediaRepository.GetByID(it.MediaId);
 
                 it.MediaUrl = media.MediaUrl;
+
+                var user = userRepository.GetAll().FirstOrDefault(a => a.UserId == it.UserId);
             }
 
             return Ok(items.ToList().GroupBy(a => a.LocationId));
