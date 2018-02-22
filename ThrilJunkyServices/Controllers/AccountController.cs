@@ -82,7 +82,7 @@ namespace ThrilJunkyServices.Controllers
         }
 
 
-        public async Task<Models.User> GetUser([FromBody]string token)
+        public async Task<Models.User> GetUser([FromBody]Token data)
         {
  
 
@@ -90,7 +90,7 @@ namespace ThrilJunkyServices.Controllers
             {
                 var req = new HttpRequestMessage(HttpMethod.Get, $"{Configuration["Auth:Domain"]}/connect/userinfo");
               
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {data.token}");
 
                 var res = await client.GetAsync(req.RequestUri);
 
@@ -102,6 +102,10 @@ namespace ThrilJunkyServices.Controllers
             }
         }
 
+        public class Token
+        {
+            public string token { get; set; }
+        }
         public class UserModel
         {
             public string Username { get; set; }
