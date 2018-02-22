@@ -16,6 +16,8 @@ namespace ThrilJunkyServices.Controllers
         IConfiguration Configuration { get; }
         IUserRepository UserRepository { get; set; }
 
+        public static string TOKEN { get; set; }
+        
         public AccountController(IConfiguration configuration, IUserRepository _UserRepository)
         {
             Configuration = configuration;
@@ -41,6 +43,8 @@ namespace ThrilJunkyServices.Controllers
                 var res = await client.SendAsync(req);
 
                 var result = await res.Content.ReadAsStringAsync();
+
+                TOKEN = result; 
 
                 return JsonConvert.DeserializeObject<Result>(result);
 
@@ -80,17 +84,15 @@ namespace ThrilJunkyServices.Controllers
 
         public async Task<UserGen> GetUserAsync(string token)
         {
-            var nvc = new List<KeyValuePair<string, string>>();
-            nvc.Add(new KeyValuePair<string, string>("authorization", $"bearer {token}"));
-          
+ 
 
             using (var client = new HttpClient())
             {
                 var req = new HttpRequestMessage(HttpMethod.Get, $"{Configuration["Auth:Domain"]}/connect/userinfo");
+              
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-                req.Content = new FormUrlEncodedContent(nvc);
-
-                var res = await client.SendAsync(req);
+                var res = await client.GetAsync(req.RequestUri);
 
                 var result = await res.Content.ReadAsStringAsync();
 
