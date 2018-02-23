@@ -7,7 +7,6 @@ namespace ThrilJunkyServices.Repositories
 {
     public interface IUserRepository
     {
-        Task<User> Add(User user);
         List<User> GetAll();
         User GetByID(int id);
     }

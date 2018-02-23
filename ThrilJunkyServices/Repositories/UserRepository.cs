@@ -32,13 +32,13 @@ namespace ThrilJunkyServices.Repositories
 
             using (IDatabase db = Connection)
             {
-                var existing = await db.FetchAsync<User>($"SELECT * FROM User WHERE Username = '{user.Username}'");
+                var existing = await db.FetchAsync<User>($"SELECT * FROM [dbo].[AspNetUsers] WHERE Username = '{user.Username}'");
 
                 if (existing == null || !existing.Any())
                 {
                     await db.InsertAsync<User>(user);
 
-                    var item = await db.FetchAsync<User>($"SELECT * FROM User WHERE Username = '{user.Username}'");
+                    var item = await db.FetchAsync<User>($"SELECT * FROM [dbo].[AspNetUsers] WHERE Username = '{user.Username}'");
 
                     return item.First();
                 }
@@ -51,7 +51,7 @@ namespace ThrilJunkyServices.Repositories
         {
             using (IDatabase db = Connection)
             {
-                return db.Fetch<User>("SELECT * FROM User");
+                return db.Fetch<User>("SELECT * FROM [dbo].[AspNetUsers]");
             }
         }
 
