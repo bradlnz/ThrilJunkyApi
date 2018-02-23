@@ -44,7 +44,7 @@ namespace ThrilJunkyServices.Controllers
 
                 it.MediaUrl = media.MediaUrl;
 
-                var user = userRepository.GetAll().FirstOrDefault(a => a.UserId == it.UserId);
+                var user = userRepository.GetAll().FirstOrDefault(a => a.Id == it.UserId);
 
                 it.Username = user.Username;
 

@@ -3,11 +3,9 @@ using NPoco;
 
 namespace ThrilJunkyServices.Models
 {
-    [TableName("User")]
-    [PrimaryKey("UserId")]
     public class User
     {
-        public int UserId { get; set; }
+        public string Id { get; set; }
 
         public int MediaId { get; set; }
 
