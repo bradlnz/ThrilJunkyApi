@@ -27,26 +27,6 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
-        public async Task<User> Add(User user)
-        {
-
-            using (IDatabase db = Connection)
-            {
-                var existing = await db.FetchAsync<User>($"SELECT * FROM [dbo].[AspNetUsers] WHERE Username = '{user.Username}'");
-
-                if (existing == null || !existing.Any())
-                {
-                    await db.InsertAsync<User>(user);
-
-                    var item = await db.FetchAsync<User>($"SELECT * FROM [dbo].[AspNetUsers] WHERE Username = '{user.Username}'");
-
-                    return item.First();
-                }
-
-                return existing.First();
-            }
-        }
-
         public List<User> GetAll()
         {
             using (IDatabase db = Connection)

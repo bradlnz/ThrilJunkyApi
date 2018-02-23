@@ -73,10 +73,6 @@ namespace ThrilJunkyServices.Controllers
 
                 var regresult = JsonConvert.DeserializeObject<RegResult>(result);
 
-                if (regresult.succeeded)
-                {
-                    await UserRepository.Add(new Models.User() { Email = model.Email, Username = model.Username });
-                }
                 return regresult;
             }
         }
