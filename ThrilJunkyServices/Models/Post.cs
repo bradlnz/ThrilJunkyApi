@@ -10,7 +10,7 @@ namespace ThrilJunkyServices.Models
         public int PostId { get; set; }
 
         //Reference to User
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         //Reference to Location
         public int LocationId { get; set; }
