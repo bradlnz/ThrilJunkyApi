@@ -52,7 +52,12 @@ namespace ThrilJunkyServices.Controllers
              
             }
 
-            return Ok(items.ToList().GroupBy(a => a.LocationId));
+            var ret = from val in items
+                      orderby val.CreatedDate descending
+                      group val by val.LocationId into g
+                      select g.Take(5).ToList();
+
+            return Ok(ret);
         }
 
         [HttpGet("{Id}")]
