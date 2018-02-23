@@ -5,7 +5,7 @@ namespace ThrilJunkyServices.Models
 {
     public class User
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         public int MediaId { get; set; }
 
