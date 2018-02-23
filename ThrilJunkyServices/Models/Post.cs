@@ -32,5 +32,7 @@ namespace ThrilJunkyServices.Models
 
         [Ignore]
         public string Username { get; set; }
+        [Ignore]
+        public string Name { get; set; }
     }
 }
