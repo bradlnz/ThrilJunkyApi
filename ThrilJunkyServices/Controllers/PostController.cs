@@ -46,6 +46,7 @@ namespace ThrilJunkyServices.Controllers
 
                 var user = userRepository.GetAll().FirstOrDefault(a => a.Id == it.UserId);
 
+                if(user != null)
                 it.Username = user.Username;
 
              

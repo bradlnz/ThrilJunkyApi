@@ -16,8 +16,7 @@ namespace ThrilJunkyServices.Controllers
         IConfiguration Configuration { get; }
         IUserRepository UserRepository { get; set; }
 
-        public static string TOKEN { get; set; }
-        
+      
         public AccountController(IConfiguration configuration, IUserRepository _UserRepository)
         {
             Configuration = configuration;
@@ -43,8 +42,6 @@ namespace ThrilJunkyServices.Controllers
                 var res = await client.SendAsync(req);
 
                 var result = await res.Content.ReadAsStringAsync();
-
-                TOKEN = result; 
 
                 return JsonConvert.DeserializeObject<Result>(result);
 
