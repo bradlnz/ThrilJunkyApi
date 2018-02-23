@@ -32,7 +32,7 @@ namespace ThrilJunkyServices.Controllers
             nvc.Add(new KeyValuePair<string, string>("password", model.Password));
             nvc.Add(new KeyValuePair<string, string>("client_id", "resourceOwner"));
             nvc.Add(new KeyValuePair<string, string>("client_secret", "secret"));
-            nvc.Add(new KeyValuePair<string, string>("scope", "openid profile"));
+            nvc.Add(new KeyValuePair<string, string>("scope", "openid profile api1"));
 
             using (var client = new HttpClient())
             {
