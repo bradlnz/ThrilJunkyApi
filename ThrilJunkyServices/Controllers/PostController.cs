@@ -15,12 +15,14 @@ namespace ThrilJunkyServices.Controllers
         private readonly IPostRepository postRepository;
         private readonly IMediaRepository mediaRepository;
         private readonly IUserRepository userRepository;
-
-        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository)
+        private readonly ILocationRepository locationRepository;
+        
+        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository)
         {
             postRepository = _postRepository;
             mediaRepository = _mediaRepository;
             userRepository = _userRepository;
+            locationRepository = _locationRepository;
         }
 
         [HttpGet]
@@ -49,7 +51,10 @@ namespace ThrilJunkyServices.Controllers
                 if(user != null)
                 it.Username = user.Username;
 
-             
+                var loc = locationRepository.GetAll().FirstOrDefault(a => a.LocationId == it.LocationId);
+                
+                if(loc != null)
+                it.Name = location.Name;
             }
 
             var ret = from val in items
