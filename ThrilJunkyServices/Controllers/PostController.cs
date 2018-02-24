@@ -54,7 +54,7 @@ namespace ThrilJunkyServices.Controllers
                 var loc = locationRepository.GetAll().FirstOrDefault(a => a.LocationId == it.LocationId);
                 
                 if(loc != null)
-                it.Name = location.Name;
+                it.Name = loc.Name;
             }
 
             var ret = from val in items
