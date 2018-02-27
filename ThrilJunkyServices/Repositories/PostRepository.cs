@@ -48,6 +48,13 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
+        public List<Post> GetAllByUserId(string userId)
+        {
+            using(IDatabase db = Connection)
+            {
+                return db.Fetch<Post>($"SELECT * FROM Post WHERE userId = '{userId}'");
+            }
+        }
 
         public List<Post> GetAllByLocationOrderByCreatedDate(float latitude, float longitude, int radius)
         {
