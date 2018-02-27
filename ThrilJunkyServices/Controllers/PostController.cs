@@ -65,6 +65,38 @@ namespace ThrilJunkyServices.Controllers
             return Ok(ret);
         }
 
+[HttpPost]
+        [Route("GetAllByUserId")]
+        public IActionResult GetAllByUserId([FromBody] UserSearch item)
+        {
+            var items = postRepository.GetAllByUserId(item.userId);
+
+            foreach(var it in items)
+            {
+               var media = mediaRepository.GetByID(it.MediaId);
+
+                it.MediaUrl = media.MediaUrl;
+
+                var user = userRepository.GetAll().FirstOrDefault(a => a.Id == it.UserId);
+
+                if(user != null)
+                it.Username = user.Username;
+
+                var loc = locationRepository.GetAll().FirstOrDefault(a => a.LocationId == it.LocationId);
+                
+                if(loc != null)
+                it.Name = loc.Name;
+            }
+
+            var ret = from val in items
+                      orderby val.CreatedDate descending
+                      group val by val.LocationId into g
+                      select g.Take(5).OrderByDescending(b => b.CreatedDate).ToList();
+
+            return Ok(ret);
+        }
+
+
         [HttpGet("{Id}")]
         public Post GetItem(int id)
         {
@@ -95,6 +127,10 @@ namespace ThrilJunkyServices.Controllers
             public float lat { get; set; }
             public float lng { get; set; }
             public int radius { get; set; }
+        }
+        
+        public class UserSearch {
+            public string userId { get; set; }
         }
 
     }
