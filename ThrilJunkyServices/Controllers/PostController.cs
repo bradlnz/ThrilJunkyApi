@@ -65,7 +65,7 @@ namespace ThrilJunkyServices.Controllers
             return Ok(ret);
         }
 
-[HttpPost]
+        [HttpPost]
         [Route("GetAllByUserId")]
         public IActionResult GetAllByUserId([FromBody] UserSearch item)
         {
