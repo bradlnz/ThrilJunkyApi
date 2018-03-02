@@ -139,7 +139,7 @@ namespace ThrilJunkyServices.Repositories
             var policy = await _client.CreateAccessPolicy("DownloadPolicy", 300, 1);
 
            
-            var locator = await _client.CreateLocator(policy.Id, outputAsset.First().Id, DateTime.Now, 2);
+            var locator = await _client.CreateLocator(policy.Id, outputAsset.First().Id, DateTime.Now, 12000);
 
            
             var url = $"{locator.Path}{asset.Name.Replace(".mp4", ".ism")}/manifest";
