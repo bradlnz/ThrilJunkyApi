@@ -89,8 +89,7 @@ namespace ThrilJunkyServices.Controllers
             }
 
             var ret = from val in items
-                      orderby val.CreatedDate descending
-                      select g.OrderByDescending(b => b.CreatedDate).ToList();
+                      select items.OrderByDescending(b => b.CreatedDate).ToList();
 
             return Ok(ret);
         }
