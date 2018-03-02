@@ -88,10 +88,8 @@ namespace ThrilJunkyServices.Controllers
                 it.Name = loc.Name;
             }
 
-            var ret = from val in items
-                      select items.OrderByDescending(b => b.CreatedDate).ToList();
-
-            return Ok(ret);
+          
+            return Ok(items.OrderByDescending(x =>x.CreatedDate));
         }
 
 
