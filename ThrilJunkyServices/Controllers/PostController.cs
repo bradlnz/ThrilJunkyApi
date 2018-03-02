@@ -90,8 +90,7 @@ namespace ThrilJunkyServices.Controllers
 
             var ret = from val in items
                       orderby val.CreatedDate descending
-                      group val by val.LocationId into g
-                      select g.Take(5).OrderByDescending(b => b.CreatedDate).ToList();
+                      select g.OrderByDescending(b => b.CreatedDate).ToList();
 
             return Ok(ret);
         }
