@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ThrilJunkyServices.Controllers
 {
@@ -39,6 +40,12 @@ namespace ThrilJunkyServices.Controllers
             Hint item = hintRepository.GetByID(id);
 
             return item;
+        }
+
+        [HttpGet]
+        public List<Hint> GetAllByPostId(int id)
+        {
+           return hintRepository.GetAllByPostId(id);
         }
 
         [HttpPost]
