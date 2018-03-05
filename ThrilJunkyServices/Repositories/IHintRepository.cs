@@ -10,6 +10,7 @@ namespace ThrilJunkyServices.Repositories
     {
         Task Add(Hint hint);
         List<Hint> GetAll();
+        List<Hint> GetAllByPostId(int id);
         Hint GetByID(int id);
     }
 }
