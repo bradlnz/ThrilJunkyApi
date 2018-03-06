@@ -26,12 +26,20 @@ namespace ThrilJunkyServices.Controllers
         public async Task<Result> Login([FromBody] UserModel model)
         {
             var nvc = new List<KeyValuePair<string, string>>();
-            nvc.Add(new KeyValuePair<string, string>("grant_type", "password"));
-            nvc.Add(new KeyValuePair<string, string>("username", model.Username));
-            nvc.Add(new KeyValuePair<string, string>("password", model.Password));
+            nvc.Add(new KeyValuePair<string, string>("grant_type", string.IsNullOrWhiteSpace(model.refresh_token)? "password" : "refresh_token"));
             nvc.Add(new KeyValuePair<string, string>("client_id", "resourceOwner"));
             nvc.Add(new KeyValuePair<string, string>("client_secret", "secret"));
-            nvc.Add(new KeyValuePair<string, string>("scope", "openid profile api1"));
+
+            if (string.IsNullOrWhiteSpace(model.refresh_token))
+            {
+                nvc.Add(new KeyValuePair<string, string>("username", model.Username));
+                nvc.Add(new KeyValuePair<string, string>("password", model.Password));
+            
+                nvc.Add(new KeyValuePair<string, string>("scope", "openid profile api1 offline_access"));
+            } else 
+            {
+                nvc.Add(new KeyValuePair<string, string>("refresh_token", model.refresh_token));
+            }
 
             using (var client = new HttpClient())
             {
@@ -103,6 +111,7 @@ namespace ThrilJunkyServices.Controllers
         {
             public string Username { get; set; }
             public string Password { get; set; }
+            public string refresh_token { get; set; }
         }
 
         public class UserGen
@@ -128,6 +137,7 @@ namespace ThrilJunkyServices.Controllers
         public class Result
             {
                 public string access_token { get; set; }
+                public string refresh_token { get; set; }
             }
             public class Error
             {
