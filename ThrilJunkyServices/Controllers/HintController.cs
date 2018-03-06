@@ -43,6 +43,7 @@ namespace ThrilJunkyServices.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllByPostId")]
         public List<Hint> GetAllByPostId(int id)
         {
            return hintRepository.GetAllByPostId(id);

@@ -48,7 +48,7 @@ namespace ThrilJunkyServices.Repositories
                 return db.Fetch<Hint>("SELECT * FROM Hint");
             }
         }
-
+        
         public List<Hint> GetAllByPostId(int id)
         {
             using (IDatabase db = Connection)
