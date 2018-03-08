@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using IdentityModel.Client;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -26,7 +28,7 @@ namespace ThrilJunkyServices.Controllers
         public async Task<Result> Login([FromBody] UserModel model)
         {
             var nvc = new List<KeyValuePair<string, string>>();
-            nvc.Add(new KeyValuePair<string, string>("grant_type", string.IsNullOrWhiteSpace(model.refresh_token)? "password" : "refresh_token"));
+            nvc.Add(new KeyValuePair<string, string>("grant_type", string.IsNullOrWhiteSpace(model.refresh_token) ? "password" : "refresh_token"));
             nvc.Add(new KeyValuePair<string, string>("client_id", "resourceOwner"));
             nvc.Add(new KeyValuePair<string, string>("client_secret", "secret"));
 
@@ -83,23 +85,33 @@ namespace ThrilJunkyServices.Controllers
         }
 
 
-        public async Task<Models.User> GetUser([FromBody]Token data)
+        public async Task<IdentityUser> GetUser([FromBody]Token data)
         {
  
 
             using (var client = new HttpClient())
             {
-                var req = new HttpRequestMessage(HttpMethod.Get, $"{Configuration["Auth:Domain"]}/connect/userinfo");
-              
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {data.token}");
+                client.SetBearerToken(data.token);
 
-                var res = await client.GetAsync(req.RequestUri);
+                var userInfoClient = new UserInfoClient($"{Configuration["Auth:Domain"]}/connect/userinfo");
 
-                var result = await res.Content.ReadAsStringAsync();
+                var response = await userInfoClient.GetAsync(data.token);
+       
+                var userDetails  = JsonConvert.DeserializeObject<UserGen>(response.Json.ToString());
 
-                var userDetails  = JsonConvert.DeserializeObject<UserGen>(result);
+                using (var client2 = new HttpClient())
+                {
+                    var req = new HttpRequestMessage(HttpMethod.Post, $"{Configuration["Auth:Domain"]}/api/account/getuserbysub");
 
-               return UserRepository.GetAll().FirstOrDefault(a => a.Username == userDetails.name);
+
+                    req.Content = new StringContent(JsonConvert.SerializeObject(userDetails), Encoding.UTF8, "application/json");
+
+                    var res = await client.SendAsync(req);
+
+                    var result = await res.Content.ReadAsStringAsync();
+
+                    return JsonConvert.DeserializeObject<IdentityUser>(result);
+                }
             }
         }
 
