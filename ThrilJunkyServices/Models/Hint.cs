@@ -16,5 +16,7 @@ namespace ThrilJunkyServices.Models
         public string HintValue { get; set; }
 
         public DateTime CreatedDate { get; set; }
+
+        public string Username { get; set; }
     }
 }

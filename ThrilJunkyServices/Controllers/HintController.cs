@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ThrilJunkyServices.Controllers
 {
@@ -19,11 +20,13 @@ namespace ThrilJunkyServices.Controllers
     {
 
         private readonly IHintRepository hintRepository;
+        private readonly IUserRepository userRepository;
         private  readonly IConfiguration config;
         
-        public HintController(IHintRepository _hintRepository, IConfiguration _config)
+        public HintController(IHintRepository _hintRepository, IUserRepository _userRepository, IConfiguration _config)
         {
             hintRepository = _hintRepository;
+            userRepository = _userRepository;
             config = _config;
         }
 
@@ -46,7 +49,14 @@ namespace ThrilJunkyServices.Controllers
         [Route("GetAllByPostId")]
         public List<Hint> GetAllByPostId(int id)
         {
-           return hintRepository.GetAllByPostId(id);
+           var posts = hintRepository.GetAllByPostId(id);
+
+            foreach(var post in posts)
+            {
+                post.Username = userRepository.GetAll().FirstOrDefault().Username;
+            }
+
+            return posts;
         }
 
         [HttpPost]
