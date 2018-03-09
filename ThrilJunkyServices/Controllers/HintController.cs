@@ -64,11 +64,7 @@ namespace ThrilJunkyServices.Controllers
         {
             try
             {
-                if (item == null || !ModelState.IsValid)
-                {
-                    return BadRequest("Invalid State");
-                }
-
+               
                 hintRepository.Add(item);
 
             }
