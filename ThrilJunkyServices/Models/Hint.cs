@@ -17,6 +17,7 @@ namespace ThrilJunkyServices.Models
 
         public DateTime CreatedDate { get; set; }
 
+        [Ignore]
         public string Username { get; set; }
     }
 }
