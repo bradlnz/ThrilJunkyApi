@@ -35,11 +35,19 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
-        public User GetByID(int id)
+        public User GetItem(string username)
         {
             using (IDatabase db = Connection)
             {
-                return db.SingleById<User>(id);
+                return db.Fetch<User>($"SELECT * FROM [dbo].[AspNetUsers] WHERE username = '{username}'").FirstOrDefault();
+            }
+        }
+
+        public int Modify(User user)
+        {
+            using (IDatabase db = Connection)
+            {
+                return db.Execute($"UPDATE [dbo].[AspNetUsers] SET MediaId='{user.MediaId}' WHERE Id = '{user.Id}'");
             }
         }
 

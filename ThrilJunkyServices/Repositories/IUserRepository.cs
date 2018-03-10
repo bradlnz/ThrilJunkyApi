@@ -8,6 +8,7 @@ namespace ThrilJunkyServices.Repositories
     public interface IUserRepository
     {
         List<User> GetAll();
-        User GetByID(int id);
+        int Modify(User user);
+        User GetItem(string username);
     }
 }

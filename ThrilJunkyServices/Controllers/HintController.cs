@@ -53,7 +53,7 @@ namespace ThrilJunkyServices.Controllers
 
             foreach(var post in posts)
             {
-                post.Username = userRepository.GetAll().FirstOrDefault().Username;
+                post.Username = userRepository.GetAll().FirstOrDefault().UserName;
             }
 
             return posts;
