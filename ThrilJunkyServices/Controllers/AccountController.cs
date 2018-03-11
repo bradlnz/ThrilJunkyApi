@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using ThrilJunkyServices.Models;
 using ThrilJunkyServices.Repositories;
 
 namespace ThrilJunkyServices.Controllers
@@ -85,7 +86,7 @@ namespace ThrilJunkyServices.Controllers
         }
 
 
-        public async Task<IdentityUser> GetUser([FromBody]Token data)
+        public async Task<User> GetUser([FromBody]Token data)
         {
  
 
@@ -110,7 +111,7 @@ namespace ThrilJunkyServices.Controllers
 
                     var result = await res.Content.ReadAsStringAsync();
 
-                    return JsonConvert.DeserializeObject<IdentityUser>(result);
+                    return JsonConvert.DeserializeObject<User>(result);
                 }
             }
         }
