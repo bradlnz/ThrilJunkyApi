@@ -1,47 +1,49 @@
 ﻿<Properties StartupConfiguration="{A70505EF-7959-48B7-8AA9-15DDD8FB4CCA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Controllers/UserController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Repositories/VoteRepository.cs">
     <Files>
-      <File FileName="ThrilJunkyServices/Startup.cs" Line="46" Column="53" />
+      <File FileName="ThrilJunkyServices/Startup.cs" Line="56" Column="70" />
       <File FileName="ThrilJunkyServices/Program.cs" Line="1" Column="1" />
       <File FileName="ThrilJunkyServices/appsettings.Development.json" Line="1" Column="1" />
       <File FileName="ThrilJunkyServices/appsettings.json" Line="24" Column="88" />
       <File FileName="ThrilJunkyServices/Properties/launchSettings.json" Line="22" Column="32" />
-      <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="11" Column="16" />
+      <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="61" Column="56" />
       <File FileName="ThrilJunkyServices/Repositories/IPostRepository.cs" Line="10" Column="34" />
       <File FileName="ThrilJunkyServices/Repositories/PostRepository.cs" Line="33" Column="27" />
-      <File FileName="ThrilJunkyServices/Models/Post.cs" Line="8" Column="18" />
-      <File FileName="ThrilJunkyServices/Models/Hint.cs" Line="17" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/Post.cs" Line="39" Column="42" />
+      <File FileName="ThrilJunkyServices/Models/Hint.cs" Line="24" Column="45" />
       <File FileName="ThrilJunkyServices/Models/MediaType.cs" Line="11" Column="9" />
       <File FileName="ThrilJunkyServices/Models/VoteType.cs" Line="11" Column="9" />
-      <File FileName="ThrilJunkyServices/Models/Vote.cs" Line="18" Column="9" />
+      <File FileName="ThrilJunkyServices/Models/Vote.cs" Line="17" Column="9" />
       <File FileName="ThrilJunkyServices/Models/VoteCategory.cs" Line="11" Column="9" />
       <File FileName="ThrilJunkyServices/Models/User.cs" Line="7" Column="38" />
       <File FileName="ThrilJunkyServices/Models/Location.cs" Line="20" Column="30" />
       <File FileName="ThrilJunkyServices/Models/LocationType.cs" Line="16" Column="1" />
       <File FileName="ThrilJunkyServices/Models/Tag.cs" Line="15" Column="9" />
       <File FileName="ThrilJunkyServices/Controllers/MediaController.cs" Line="77" Column="12" />
-      <File FileName="ThrilJunkyServices/Repositories/MediaRepository.cs" Line="185" Column="1" />
+      <File FileName="ThrilJunkyServices/Repositories/MediaRepository.cs" Line="190" Column="14" />
       <File FileName="ThrilJunkyServices/Repositories/ILocationRepository.cs" Line="10" Column="4" />
       <File FileName="ThrilJunkyServices/ViewModels/UploadResult.cs" Line="9" Column="10" />
       <File FileName="ThrilJunkyServices/Models/Media.cs" Line="10" Column="4" />
       <File FileName="ThrilJunkyServices/Repositories/IMediaRepository.cs" Line="21" Column="27" />
       <File FileName="ThrilJunkyServices/Repositories/ITagRepository.cs" Line="12" Column="28" />
       <File FileName="ThrilJunkyServices/Repositories/LocationRepository.cs" Line="57" Column="24" />
-      <File FileName="ThrilJunkyServices/Repositories/TagRepository.cs" Line="57" Column="18" />
+      <File FileName="ThrilJunkyServices/Repositories/TagRepository.cs" Line="25" Column="10" />
       <File FileName="ThrilJunkyServices/Controllers/LocationController.cs" Line="19" Column="9" />
-      <File FileName="ThrilJunkyServices/Controllers/TagController.cs" Line="13" Column="5" />
+      <File FileName="ThrilJunkyServices/Controllers/TagController.cs" Line="76" Column="6" />
       <File FileName="ThrilJunkyServices/Controllers/AccountController.cs" Line="1" Column="1" />
       <File FileName="ThrilJunkyServices/Repositories/IUserRepository.cs" Line="11" Column="30" />
       <File FileName="ThrilJunkyServices/Repositories/UserRepository.cs" Line="39" Column="10" />
-      <File FileName="ThrilJunkyServices/Controllers/HintController.cs" Line="69" Column="17" />
-      <File FileName="ThrilJunkyServices/Controllers/UserController.cs" Line="32" Column="13" />
+      <File FileName="ThrilJunkyServices/Controllers/HintController.cs" Line="59" Column="69" />
+      <File FileName="ThrilJunkyServices/Controllers/UserController.cs" Line="37" Column="38" />
+      <File FileName="ThrilJunkyServices/Repositories/IVoteRepository.cs" Line="10" Column="28" />
+      <File FileName="ThrilJunkyServices/Repositories/VoteRepository.cs" Line="60" Column="10" />
+      <File FileName="ThrilJunkyServices/Controllers/VoteController.cs" Line="58" Column="1" />
+      <File FileName="ThrilJunkyServices/Repositories/HintRepository.cs" Line="52" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/bradlietz/service/ThrilJunkyServices/ThrilJunkyServices/Repositories/MediaRepository.cs" relfile="ThrilJunkyServices/Repositories/MediaRepository.cs" line="117" column="32" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.ThrilJunkyServices PreferredExecutionTarget="MonoDevelop.Default" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NPoco;
 
 namespace ThrilJunkyServices.Models
@@ -37,5 +38,11 @@ namespace ThrilJunkyServices.Models
 
         [Ignore]
         public string UserProfileImageUrl { get; set; }
+
+        [Ignore]
+        public List<Vote> Votes { get; set; }
+
+        [Ignore]
+        public int VoteTypeId { get; set; }
     }
 }

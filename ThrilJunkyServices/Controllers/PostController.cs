@@ -16,13 +16,15 @@ namespace ThrilJunkyServices.Controllers
         private readonly IMediaRepository mediaRepository;
         private readonly IUserRepository userRepository;
         private readonly ILocationRepository locationRepository;
-        
-        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository)
+        private readonly IVoteRepository voteRepository;
+
+        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository, IVoteRepository _voteRepository)
         {
             postRepository = _postRepository;
             mediaRepository = _mediaRepository;
             userRepository = _userRepository;
             locationRepository = _locationRepository;
+            voteRepository = _voteRepository;
         }
 
         [HttpGet]
@@ -59,6 +61,25 @@ namespace ThrilJunkyServices.Controllers
                     if (media1 != null)
                     {
                         it.UserProfileImageUrl = media1.MediaUrl;
+                    }
+                }
+
+                var vote = voteRepository.GetByID(it.PostId, user.Id);
+
+                if(vote != null)
+                {
+                    it.VoteTypeId = vote.VoteTypeId;
+                }
+
+                it.Votes = voteRepository.GetAll().Where(a => a.PostId == it.PostId).ToList();
+              
+                if(it.Votes.Any())
+                {
+                    foreach (var v in it.Votes){
+                        if (user.MediaId > 0)
+                        {
+                            v.UserProfileImage = mediaRepository.GetByID(user.MediaId);
+                        }
                     }
                 }
 
