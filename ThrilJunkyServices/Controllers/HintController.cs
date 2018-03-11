@@ -21,12 +21,15 @@ namespace ThrilJunkyServices.Controllers
 
         private readonly IHintRepository hintRepository;
         private readonly IUserRepository userRepository;
+        private readonly IMediaRepository mediaRepository;
+
         private  readonly IConfiguration config;
         
-        public HintController(IHintRepository _hintRepository, IUserRepository _userRepository, IConfiguration _config)
+        public HintController(IHintRepository _hintRepository, IUserRepository _userRepository, IMediaRepository _mediaRepository, IConfiguration _config)
         {
             hintRepository = _hintRepository;
             userRepository = _userRepository;
+            mediaRepository = _mediaRepository;
             config = _config;
         }
 
@@ -53,7 +56,18 @@ namespace ThrilJunkyServices.Controllers
 
             foreach(var post in posts)
             {
-                post.Username = userRepository.GetAll().FirstOrDefault().UserName;
+                var user = userRepository.GetAll().FirstOrDefault();
+
+                post.Username = user.UserName;
+
+                if(user.MediaId > 0){
+                    
+                    var media = mediaRepository.GetByID(user.MediaId);
+
+                    post.MediaUrl = media.MediaUrl;     
+                }
+               
+               
             }
 
             return posts;
