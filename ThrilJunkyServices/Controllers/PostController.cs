@@ -58,7 +58,7 @@ namespace ThrilJunkyServices.Controllers
 
                     if (media1 != null)
                     {
-                        it.UserProfileImageUrl = user.MediaUrl;
+                        it.UserProfileImageUrl = media1.MediaUrl;
                     }
                 }
 
