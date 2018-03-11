@@ -34,5 +34,8 @@ namespace ThrilJunkyServices.Models
         public string Username { get; set; }
         [Ignore]
         public string Name { get; set; }
+
+        [Ignore]
+        public string UserProfileImageUrl { get; set; }
     }
 }
