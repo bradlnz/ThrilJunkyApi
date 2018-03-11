@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{A70505EF-7959-48B7-8AA9-15DDD8FB4CCA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Controllers/HintController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Controllers/UserController.cs">
     <Files>
       <File FileName="ThrilJunkyServices/Startup.cs" Line="46" Column="53" />
       <File FileName="ThrilJunkyServices/Program.cs" Line="1" Column="1" />
@@ -33,8 +33,8 @@
       <File FileName="ThrilJunkyServices/Controllers/AccountController.cs" Line="1" Column="1" />
       <File FileName="ThrilJunkyServices/Repositories/IUserRepository.cs" Line="11" Column="30" />
       <File FileName="ThrilJunkyServices/Repositories/UserRepository.cs" Line="39" Column="10" />
-      <File FileName="ThrilJunkyServices/Controllers/UserController.cs" Line="57" Column="13" />
-      <File FileName="ThrilJunkyServices/Controllers/HintController.cs" Line="56" Column="74" />
+      <File FileName="ThrilJunkyServices/Controllers/HintController.cs" Line="69" Column="17" />
+      <File FileName="ThrilJunkyServices/Controllers/UserController.cs" Line="32" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

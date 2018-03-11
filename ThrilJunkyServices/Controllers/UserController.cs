@@ -18,24 +18,51 @@ namespace ThrilJunkyServices.Controllers
 
         private readonly IUserRepository userRepository;
         private readonly IConfiguration config;
+        private readonly IMediaRepository mediaRepository;
 
-        public UserController(IUserRepository _userRepository, IConfiguration _config)
+        public UserController(IUserRepository _userRepository, IMediaRepository _mediaRepository, IConfiguration _config)
         {
             userRepository = _userRepository;
+            mediaRepository = _mediaRepository;
             config = _config;
         }
 
         [HttpGet]
-
         public IActionResult List()
         {
-            return Ok(userRepository.GetAll());
+            var users = userRepository.GetAll();
+
+            foreach(var user in users){
+
+                if(user.MediaId > 0){
+                    var media = mediaRepository.GetByID(user.MediaId);
+
+                    if (media != null)
+                    {
+                        user.MediaUrl = media.MediaUrl;
+                    }     
+                }
+               
+                   
+            }
+
+            return Ok(users);
         }
 
         [HttpGet("{username}")]
         public User GetItem(string username)
         {
             User item = userRepository.GetItem(username);
+
+            if (item.MediaId > 0)
+            {
+                var media = mediaRepository.GetByID(item.MediaId);
+
+                if (media != null)
+                {
+                    item.MediaUrl = media.MediaUrl;
+                }
+            }
 
             return item;
         }
