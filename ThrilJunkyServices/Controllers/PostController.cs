@@ -48,8 +48,19 @@ namespace ThrilJunkyServices.Controllers
 
                 var user = userRepository.GetAll().FirstOrDefault(a => a.Id == it.UserId);
 
+
                 if(user != null)
                 it.Username = user.UserName;
+
+                if (user.MediaId > 0)
+                {
+                    var media1 = mediaRepository.GetByID(user.MediaId);
+
+                    if (media1 != null)
+                    {
+                        user.MediaUrl = media.MediaUrl;
+                    }
+                }
 
                 var loc = locationRepository.GetAll().FirstOrDefault(a => a.LocationId == it.LocationId);
                 
