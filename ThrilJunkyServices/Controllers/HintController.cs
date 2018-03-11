@@ -56,7 +56,7 @@ namespace ThrilJunkyServices.Controllers
 
             foreach(var post in posts)
             {
-                var user = userRepository.GetAll().FirstOrDefault();
+                var user = userRepository.GetAll().FirstOrDefault(a => a.Id == post.UserId);
 
                 post.Username = user.UserName;
 
