@@ -47,8 +47,7 @@ namespace ThrilJunkyServices.Repositories
 
                     return item.First();
                 } else {
-                     db.Save<Vote>(vote);
-
+                    db.Execute($"UPDATE [dbo].[Vote] SET VoteTypeId='{vote.VoteTypeId}' WHERE ID = '{vote.ID}'");
                     var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
 
                     return item.First();
