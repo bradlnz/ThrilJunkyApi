@@ -47,10 +47,14 @@ namespace ThrilJunkyServices.Repositories
 
                     return item.First();
                 } else {
-                    db.Execute($"UPDATE [dbo].[Vote] SET VoteTypeId='{vote.VoteTypeId}' WHERE ID = '{vote.ID}'");
+
                     var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
 
-                    return item.First();
+                    db.Execute($"UPDATE [dbo].[Vote] SET VoteTypeId='{vote.VoteTypeId}' WHERE ID = '{item.FirstOrDefault().ID}'");
+
+                    var item2 = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
+
+                    return item2.First();
                 }
             }
         }
