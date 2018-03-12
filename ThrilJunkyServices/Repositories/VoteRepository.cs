@@ -47,10 +47,12 @@ namespace ThrilJunkyServices.Repositories
 
                     return item.First();
                 } else {
-                    await db.UpdateAsync<Vote>(vote, a => a.VoteTypeId);
-                }
+                     db.Save<Vote>(vote);
 
-                return existing.First();
+                    var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
+
+                    return item.First();
+                }
             }
         }
 
