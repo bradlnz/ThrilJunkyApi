@@ -37,24 +37,51 @@ namespace ThrilJunkyServices.Repositories
 
             using (IDatabase db = Connection)
             {
-                var existing = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
-
-                if (existing == null || !existing.Any())
+                if (vote.HintId == null)
                 {
-                    await db.InsertAsync<Vote>(vote);
+                    var existing = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
 
-                    var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
+                    if (existing == null || !existing.Any())
+                    {
+                        await db.InsertAsync<Vote>(vote);
 
-                    return item.First();
+                        var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
+
+                        return item.First();
+                    }
+                    else
+                    {
+
+                        var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
+
+                        db.Execute($"UPDATE [dbo].[Vote] SET VoteTypeId='{vote.VoteTypeId}' WHERE ID = '{item.FirstOrDefault().ID}'");
+
+                        var item2 = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
+
+                        return item2.First();
+                    }
                 } else {
+                    var existing = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND HintId = '{vote.HintId}'");
 
-                    var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
+                    if (existing == null || !existing.Any())
+                    {
+                        await db.InsertAsync<Vote>(vote);
 
-                    db.Execute($"UPDATE [dbo].[Vote] SET VoteTypeId='{vote.VoteTypeId}' WHERE ID = '{item.FirstOrDefault().ID}'");
+                        var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND HintId = '{vote.HintId}'");
 
-                    var item2 = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND PostId = '{vote.PostId}'");
+                        return item.First();
+                    }
+                    else
+                    {
 
-                    return item2.First();
+                        var item = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND HintId = '{vote.HintId}'");
+
+                        db.Execute($"UPDATE [dbo].[Vote] SET VoteTypeId='{vote.VoteTypeId}' WHERE ID = '{item.FirstOrDefault().ID}'");
+
+                        var item2 = await db.FetchAsync<Vote>($"SELECT * FROM Vote WHERE UserId = '{vote.UserId}' AND HintId = '{vote.HintId}'");
+
+                        return item2.First();
+                    }
                 }
             }
         }
