@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NPoco;
 
 namespace ThrilJunkyServices.Models
@@ -22,5 +23,14 @@ namespace ThrilJunkyServices.Models
 
         [Ignore]
         public string MediaUrl { get; set; }
+
+        [Ignore]
+        public int VoteTypeId { get; set; }
+
+        [Ignore]
+        public List<Vote> Likes { get; set; }
+
+        [Ignore]
+        public List<Vote> Dislikes { get; set; }
     }
 }

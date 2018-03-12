@@ -110,5 +110,12 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
+        public Vote GetByHintID(int id, string userId)
+        {
+            using (IDatabase db = Connection)
+            {
+                return db.FirstOrDefault<Vote>($"SELECT * FROM Vote WHERE UserId = '{userId}' AND HintId = '{id}'");
+            }
+        }
     }
 }

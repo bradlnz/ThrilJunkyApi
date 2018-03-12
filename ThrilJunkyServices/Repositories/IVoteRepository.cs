@@ -10,5 +10,6 @@ namespace ThrilJunkyServices.Repositories
         Task<Vote> Add(Vote tag);
         List<Vote> GetAll();
         Vote GetByID(int id, string userId);
+        Vote GetByHintID(int id, string userId);
     }
 }

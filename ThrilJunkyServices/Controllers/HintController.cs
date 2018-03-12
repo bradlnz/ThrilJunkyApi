@@ -22,14 +22,16 @@ namespace ThrilJunkyServices.Controllers
         private readonly IHintRepository hintRepository;
         private readonly IUserRepository userRepository;
         private readonly IMediaRepository mediaRepository;
+        private readonly IVoteRepository voteRepository;
 
         private  readonly IConfiguration config;
         
-        public HintController(IHintRepository _hintRepository, IUserRepository _userRepository, IMediaRepository _mediaRepository, IConfiguration _config)
+        public HintController(IHintRepository _hintRepository, IUserRepository _userRepository, IMediaRepository _mediaRepository, IVoteRepository _voteRepository, IConfiguration _config)
         {
             hintRepository = _hintRepository;
             userRepository = _userRepository;
             mediaRepository = _mediaRepository;
+            voteRepository = _voteRepository;
             config = _config;
         }
 
@@ -66,8 +68,14 @@ namespace ThrilJunkyServices.Controllers
 
                     post.MediaUrl = media.MediaUrl;     
                 }
-               
-               
+                var vote = voteRepository.GetByID(post.HintId, user.Id);
+
+                if(vote != null){
+                    post.VoteTypeId = vote.VoteTypeId;
+                }
+                post.Likes = voteRepository.GetAll().Where(a => a.VoteTypeId == 1 && a.HintId == id).ToList();
+
+                post.Dislikes = voteRepository.GetAll().Where(a => a.VoteTypeId == 2 && a.HintId == id).ToList();
             }
 
             return posts;
