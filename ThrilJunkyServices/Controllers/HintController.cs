@@ -54,7 +54,7 @@ namespace ThrilJunkyServices.Controllers
         [Route("GetAllByPostId")]
         public List<Hint> GetAllByPostId(int id)
         {
-           var posts = hintRepository.GetAllByPostId(id);
+            var posts = hintRepository.GetAllByPostId(id).OrderByDescending(a => a.Likes?.Count());
 
             foreach(var post in posts)
             {
@@ -78,7 +78,7 @@ namespace ThrilJunkyServices.Controllers
                 post.Dislikes = voteRepository.GetAll().Where(a => a.VoteTypeId == 2 && a.HintId == post.HintId).ToList();
             }
 
-            return posts;
+            return posts.ToList();
         }
 
         [HttpPost]
