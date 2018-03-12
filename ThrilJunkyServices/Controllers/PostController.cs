@@ -71,9 +71,9 @@ namespace ThrilJunkyServices.Controllers
                     it.VoteTypeId = vote.VoteTypeId;
                 }
 
-                it.Votes = voteRepository.GetAll().Where(a => a.PostId == it.PostId).ToList();
+                it.Votes = voteRepository.GetAll().Where(a => a.PostId == it.PostId && a.VoteTypeId == 1).ToList();
               
-                if(it.Votes.Any())
+                if(it.Votes.Any(a => a.VoteTypeId == 1))
                 {
                     foreach (var v in it.Votes){
                         if (user.MediaId > 0)
