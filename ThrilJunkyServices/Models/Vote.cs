@@ -7,6 +7,7 @@ namespace ThrilJunkyServices.Models
     [PrimaryKey("ID")]
     public class Vote
     {
+        
         public int ID { get; set; }
         //ie Upvote, Downvote
         public int VoteTypeId { get; set; }
