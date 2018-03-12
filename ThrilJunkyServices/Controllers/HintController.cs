@@ -73,9 +73,9 @@ namespace ThrilJunkyServices.Controllers
                 if(vote != null){
                     post.VoteTypeId = vote.VoteTypeId;
                 }
-                post.Likes = voteRepository.GetAll().Where(a => a.VoteTypeId == 1 && a.HintId == id).ToList();
+                post.Likes = voteRepository.GetAll().Where(a => a.VoteTypeId == 1 && a.HintId == post.HintId).ToList();
 
-                post.Dislikes = voteRepository.GetAll().Where(a => a.VoteTypeId == 2 && a.HintId == id).ToList();
+                post.Dislikes = voteRepository.GetAll().Where(a => a.VoteTypeId == 2 && a.HintId == post.HintId).ToList();
             }
 
             return posts;
