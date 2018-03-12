@@ -68,7 +68,7 @@ namespace ThrilJunkyServices.Controllers
 
                     post.MediaUrl = media.MediaUrl;     
                 }
-                var vote = voteRepository.GetByID(post.HintId, user.Id);
+                var vote = voteRepository.GetAll().Where(a => a.HintId == post.HintId).FirstOrDefault();
 
                 if(vote != null){
                     post.VoteTypeId = vote.VoteTypeId;
