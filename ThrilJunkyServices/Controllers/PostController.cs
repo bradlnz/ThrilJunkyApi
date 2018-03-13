@@ -78,7 +78,7 @@ namespace ThrilJunkyServices.Controllers
                     foreach (var v in it.Votes){
                         if (user.MediaId > 0)
                         {
-                            var u = userRepository.GetAll().FirstOrDefault(a => a.Id == vote.UserId);
+                            var u = userRepository.GetAll().FirstOrDefault(a => a.Id == v.UserId);
                             v.UserProfileImage = mediaRepository.GetByID(u.MediaId);
                         }
                     }
