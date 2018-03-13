@@ -64,7 +64,7 @@ namespace ThrilJunkyServices.Controllers
                     }
                 }
 
-                var vote = voteRepository.GetByID(it.PostId, user.Id);
+                var vote = voteRepository.GetByID(it.PostId, item.UserId);
 
                 if(vote != null)
                 {
@@ -78,7 +78,8 @@ namespace ThrilJunkyServices.Controllers
                     foreach (var v in it.Votes){
                         if (user.MediaId > 0)
                         {
-                            v.UserProfileImage = mediaRepository.GetByID(user.MediaId);
+                            var u = userRepository.GetAll().FirstOrDefault(a => a.Id == vote.UserId);
+                            v.UserProfileImage = mediaRepository.GetByID(u.MediaId);
                         }
                     }
                 }
@@ -155,6 +156,7 @@ namespace ThrilJunkyServices.Controllers
             public float lat { get; set; }
             public float lng { get; set; }
             public int radius { get; set; }
+            public string UserId { get; set; }
         }
         
         public class UserSearch {
