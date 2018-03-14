@@ -54,6 +54,8 @@ namespace ThrilJunkyServices
             services.AddSingleton<ILocationRepository, LocationRepository>();
 
             services.AddSingleton<IVoteRepository, VoteRepository>();
+
+            services.AddSingleton<IReportingRepository, ReportingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
