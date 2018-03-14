@@ -17,14 +17,16 @@ namespace ThrilJunkyServices.Controllers
         private readonly IUserRepository userRepository;
         private readonly ILocationRepository locationRepository;
         private readonly IVoteRepository voteRepository;
+        private readonly IReportingRepository reportingRepository;
 
-        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository, IVoteRepository _voteRepository)
+        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository, IVoteRepository _voteRepository, IReportingRepository _reportingRepository)
         {
             postRepository = _postRepository;
             mediaRepository = _mediaRepository;
             userRepository = _userRepository;
             locationRepository = _locationRepository;
             voteRepository = _voteRepository;
+            reportingRepository = _reportingRepository;
         }
 
         [HttpGet]
@@ -83,6 +85,8 @@ namespace ThrilJunkyServices.Controllers
                         }
                     }
                 }
+
+                it.ReportedItems = reportingRepository.GetAllByPostId(it.PostId);
 
                 var loc = locationRepository.GetAll().FirstOrDefault(a => a.LocationId == it.LocationId);
                 
@@ -150,6 +154,23 @@ namespace ThrilJunkyServices.Controllers
             return Ok(item);
         }
 
+
+        [HttpPost]
+        [Route("ReportItem")]
+        public IActionResult ReportItem([FromBody]ReportedItem item)
+        {
+            try
+            {
+
+                reportingRepository.Add(item);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.GetBaseException().Message);
+            }
+            return Ok(item);
+        }
 
         public class LocationSearch
         {

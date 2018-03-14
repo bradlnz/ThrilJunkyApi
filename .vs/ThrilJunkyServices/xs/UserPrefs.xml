@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{A70505EF-7959-48B7-8AA9-15DDD8FB4CCA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Controllers/VoteController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Repositories/ReportingRepository.cs">
     <Files>
       <File FileName="ThrilJunkyServices/Startup.cs" Line="56" Column="70" />
       <File FileName="ThrilJunkyServices/Program.cs" Line="1" Column="1" />
       <File FileName="ThrilJunkyServices/appsettings.Development.json" Line="1" Column="1" />
       <File FileName="ThrilJunkyServices/appsettings.json" Line="24" Column="88" />
       <File FileName="ThrilJunkyServices/Properties/launchSettings.json" Line="22" Column="32" />
-      <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="82" Column="26" />
+      <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="81" Column="28" />
       <File FileName="ThrilJunkyServices/Repositories/IPostRepository.cs" Line="10" Column="34" />
       <File FileName="ThrilJunkyServices/Repositories/PostRepository.cs" Line="33" Column="27" />
       <File FileName="ThrilJunkyServices/Models/Post.cs" Line="41" Column="9" />
@@ -36,15 +36,16 @@
       <File FileName="ThrilJunkyServices/Controllers/HintController.cs" Line="59" Column="39" />
       <File FileName="ThrilJunkyServices/Controllers/UserController.cs" Line="37" Column="38" />
       <File FileName="ThrilJunkyServices/Repositories/VoteRepository.cs" Line="77" Column="10" />
-      <File FileName="ThrilJunkyServices/Controllers/VoteController.cs" Line="47" Column="50" />
+      <File FileName="ThrilJunkyServices/Controllers/VoteController.cs" Line="48" Column="13" />
       <File FileName="ThrilJunkyServices/Repositories/HintRepository.cs" Line="52" Column="8" />
+      <File FileName="ThrilJunkyServices/Repositories/IReportingRepository.cs" Line="12" Column="51" />
+      <File FileName="ThrilJunkyServices/Models/ReportedItem.cs" Line="6" Column="2" />
+      <File FileName="ThrilJunkyServices/Repositories/ReportingRepository.cs" Line="17" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/bradlietz/service/ThrilJunkyServices/ThrilJunkyServices/Controllers/VoteController.cs" relfile="ThrilJunkyServices/Controllers/VoteController.cs" line="44" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.ThrilJunkyServices PreferredExecutionTarget="MonoDevelop.Default" />
