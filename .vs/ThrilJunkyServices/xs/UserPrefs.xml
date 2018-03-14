@@ -35,9 +35,8 @@
       <File FileName="ThrilJunkyServices/Repositories/UserRepository.cs" Line="39" Column="10" />
       <File FileName="ThrilJunkyServices/Controllers/HintController.cs" Line="59" Column="39" />
       <File FileName="ThrilJunkyServices/Controllers/UserController.cs" Line="37" Column="38" />
-      <File FileName="ThrilJunkyServices/Repositories/IVoteRepository.cs" Line="9" Column="6" />
       <File FileName="ThrilJunkyServices/Repositories/VoteRepository.cs" Line="77" Column="10" />
-      <File FileName="ThrilJunkyServices/Controllers/VoteController.cs" Line="44" Column="1" />
+      <File FileName="ThrilJunkyServices/Controllers/VoteController.cs" Line="47" Column="50" />
       <File FileName="ThrilJunkyServices/Repositories/HintRepository.cs" Line="52" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>

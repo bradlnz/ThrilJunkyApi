@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +17,16 @@ namespace ThrilJunkyServices.Controllers
     {
 
         private readonly IVoteRepository voteRepository;
+        private readonly IUserRepository userRepository;
+        private readonly IMediaRepository mediaRepository;
+
         private readonly IConfiguration config;
 
-        public VoteController(IVoteRepository _voteRepository, IConfiguration _config)
+        public VoteController(IVoteRepository _voteRepository, IUserRepository _userRepository, IMediaRepository _mediaRepository, IConfiguration _config)
         {
             voteRepository = _voteRepository;
+            userRepository = _userRepository;
+            mediaRepository = _mediaRepository;
             config = _config;
         }
 
@@ -45,6 +51,10 @@ namespace ThrilJunkyServices.Controllers
             try
             {
                 var res = await voteRepository.Add(item);
+
+                var u = userRepository.GetAll().FirstOrDefault(a => a.Id == res.UserId);
+             
+                res.UserProfileImage = mediaRepository.GetByID(u.MediaId);
 
                 return Ok(res);
 
