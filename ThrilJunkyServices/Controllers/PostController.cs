@@ -81,7 +81,17 @@ namespace ThrilJunkyServices.Controllers
                         if (user.MediaId > 0)
                         {
                             var u = userRepository.GetAll().FirstOrDefault(a => a.Id == v.UserId);
+                            if (u != null && u.MediaId > 0){
+
                             v.UserProfileImage = mediaRepository.GetByID(u.MediaId);
+                            } 
+                            if(u.MediaId <= 0){
+                                v.UserProfileImage = new Media
+                                {
+                                    MediaTypeId = 1,
+                                    MediaUrl = "https://thriljunkystorage.blob.core.windows.net/public/avatar-large.png"
+                                };
+                            }
                         }
                     }
                 }

@@ -12794,11 +12794,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/bradlietz/service/ThrilJunkyServices/ThrilJunkyServices/ThrilJunkyServices.csproj",
+      "projectUniqueName": "/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/ThrilJunkyServices.csproj",
       "projectName": "ThrilJunkyServices",
-      "projectPath": "/Users/bradlietz/service/ThrilJunkyServices/ThrilJunkyServices/ThrilJunkyServices.csproj",
+      "projectPath": "/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/ThrilJunkyServices.csproj",
       "packagesPath": "/Users/bradlietz/.nuget/packages/",
-      "outputPath": "/Users/bradlietz/service/ThrilJunkyServices/ThrilJunkyServices/obj",
+      "outputPath": "/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

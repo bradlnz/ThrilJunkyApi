@@ -53,3 +53,14 @@ D:/Repos/Other/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/Thr
 /Users/bradlietz/service/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.AssemblyInfo.cs
 /Users/bradlietz/service/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.dll
 /Users/bradlietz/service/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.pdb
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.deps.json
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.runtimeconfig.json
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.runtimeconfig.dev.json
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.dll
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/bin/Debug/netcoreapp2.0/ThrilJunkyServices.pdb
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.csprojResolveAssemblyReference.cache
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.csproj.CoreCompileInputs.cache
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.AssemblyInfoInputs.cache
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.AssemblyInfo.cs
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.dll
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/obj/Debug/netcoreapp2.0/ThrilJunkyServices.pdb
