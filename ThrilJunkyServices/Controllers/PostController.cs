@@ -50,7 +50,7 @@ namespace ThrilJunkyServices.Controllers
 
                 it.MediaUrl = media.MediaUrl;
 
-                var user = userRepository.GetAll().FirstOrDefault(a => a.Id == it.UserId);
+                var user = userRepository.GetById(it.UserId);
 
 
                 if(user != null)
@@ -80,7 +80,7 @@ namespace ThrilJunkyServices.Controllers
                     foreach (var v in it.Votes){
                         if (user.MediaId > 0)
                         {
-                            var u = userRepository.GetAll().FirstOrDefault(a => a.Id == v.UserId);
+                            var u = userRepository.GetById(v.UserId);
                             if (u != null && u.MediaId > 0){
 
                             v.UserProfileImage = mediaRepository.GetByID(u.MediaId);
@@ -98,7 +98,7 @@ namespace ThrilJunkyServices.Controllers
 
                 it.ReportedItems = reportingRepository.GetAllByPostId(it.PostId);
 
-                var loc = locationRepository.GetAll().FirstOrDefault(a => a.LocationId == it.LocationId);
+                var loc = locationRepository.GetByID(it.LocationId);
                 
                 if(loc != null)
                 it.Name = loc.Name;

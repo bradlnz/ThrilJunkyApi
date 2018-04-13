@@ -10,5 +10,6 @@ namespace ThrilJunkyServices.Repositories
         List<User> GetAll();
         int Modify(User user);
         User GetItem(string username);
+        User GetById(string id);
     }
 }
