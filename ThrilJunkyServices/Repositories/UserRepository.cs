@@ -35,6 +35,14 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
+        public User GetById(string id)
+        {
+            using (IDatabase db = Connection)
+            {
+                return db.Fetch<User>($"SELECT * FROM [dbo].[AspNetUsers] WHERE Id = '{id}'").FirstOrDefault();
+            }
+        }
+
         public User GetItem(string username)
         {
             using (IDatabase db = Connection)

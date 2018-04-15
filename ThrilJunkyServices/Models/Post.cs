@@ -47,5 +47,11 @@ namespace ThrilJunkyServices.Models
 
         [Ignore]
         public int VoteTypeId { get; set; }
+
+        [Ignore]
+        public float Latitude { get; set; }
+
+        [Ignore]
+        public float Longitude { get; set; }
     }
 }

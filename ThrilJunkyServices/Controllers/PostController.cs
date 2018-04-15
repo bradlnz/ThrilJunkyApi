@@ -100,8 +100,12 @@ namespace ThrilJunkyServices.Controllers
 
                 var loc = locationRepository.GetByID(it.LocationId);
                 
-                if(loc != null)
-                it.Name = loc.Name;
+                if(loc != null){
+                    it.Name = loc.Name;
+                    it.Latitude = loc.Latitude;
+                    it.Longitude = loc.Longitude;
+                }
+        
             }
 
             var ret = from val in items
