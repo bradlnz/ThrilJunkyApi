@@ -8,6 +8,6 @@ RUN ["dotnet", "restore"]
 
 RUN ["dotnet", "build"]
 
-EXPOSE 5000/tcp
+EXPOSE 8080/tcp
 
 ENTRYPOINT ["dotnet", "run", "--server.urls", "http://localhost:5000"]

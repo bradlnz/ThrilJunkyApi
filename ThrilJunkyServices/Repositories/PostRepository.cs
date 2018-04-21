@@ -60,7 +60,7 @@ namespace ThrilJunkyServices.Repositories
         {
             using(IDatabase db = Connection)
             {
-                return db.Fetch<Post>($"SELECT p.*, l.* FROM Post p INNER JOIN Location l on l.LocationId = p.LocationId WHERE dbo.GetDistanceBetween({latitude}, {longitude}, l.latitude, l.longitude) <= {radius};");
+                return db.Fetch<Post>($"SELECT TOP 5 p.*, l.* FROM Post p INNER JOIN Location l on l.LocationId = p.LocationId WHERE dbo.GetDistanceBetween({latitude}, {longitude}, l.latitude, l.longitude) <= {radius};");
             }
         }
 
