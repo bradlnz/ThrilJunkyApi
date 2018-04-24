@@ -14,9 +14,8 @@ namespace ThrilJunkyServices.Repositories
         Media GetByID(int id);
         Task<MediaType> GetType(string extension);
         Task<Media> Upload(
-            string connectionString,
-            string containerName,
-            string blobName,
+            string bucketName,
+            string fileName,
             string extension,
             IFormFile file);
     }

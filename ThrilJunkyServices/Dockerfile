@@ -1,8 +1,8 @@
 FROM microsoft/dotnet
 
-COPY . /app
+COPY . /
 
-WORKDIR /app
+WORKDIR /
 
 RUN ["dotnet", "restore"]
 
@@ -10,4 +10,4 @@ RUN ["dotnet", "build"]
 
 EXPOSE 8080/tcp
 
-ENTRYPOINT ["dotnet", "run", "--server.urls", "http://localhost:5000"]
+ENTRYPOINT ["dotnet", "run", "--server.urls", "http://localhost:8080"]

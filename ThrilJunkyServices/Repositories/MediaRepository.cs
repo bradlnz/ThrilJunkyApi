@@ -16,19 +16,29 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using System.Threading;
 using Azure.MediaServices.Core.Jobs;
 using Azure.MediaServices.Core.Assets;
+using Microsoft.AspNetCore.Hosting;
+using Amazon.S3;
+using Amazon;
+using Amazon.S3.Transfer;
+using Amazon.S3.Model;
 
 namespace ThrilJunkyServices.Repositories
 {
     public class MediaRepository : IMediaRepository
     {
-      
-        private  readonly IConfiguration _config;
-        private readonly IAzureMediaServiceClient _client;
 
-        public MediaRepository(IConfiguration config) 
+
+        private readonly IConfiguration _config;
+        private readonly IAzureMediaServiceClient _client;
+        private IHostingEnvironment _hostingEnvironment;
+        private AmazonS3Client _s3Client = new AmazonS3Client(RegionEndpoint.USEast1);
+        private static string _bucketSubdirectory = String.Empty;
+
+
+        public MediaRepository(IConfiguration config, IHostingEnvironment environment)
         {
             _config = config;
-            _client = new AzureMediaServiceClient(config["ClientId"], config["ClientKey"], config["MediaServicesRestApi"], config["TenantDomain"]);
+            _hostingEnvironment = environment;
         }
 
         public IDatabase Connection
@@ -70,7 +80,7 @@ namespace ThrilJunkyServices.Repositories
             {
                 var results = await db.FetchAsync<MediaType>($"SELECT * FROM MediaType WHERE Type = '{extension}'");
 
-                if(!results.Any())
+                if (!results.Any())
                 {
                     var results2 = await db.FetchAsync<MediaType>($"SELECT * FROM MediaType");
 
@@ -89,106 +99,42 @@ namespace ThrilJunkyServices.Repositories
                 return results.First();
             }
         }
-        
+
         public async Task<Media> Upload(
-            string connectionString,
-            string containerName,
-            string blobName,
+            string bucketName,
+            string fileName,
             string extension,
             IFormFile file)
         {
-            var cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
-            var cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
-            var cloudBlobContainer = cloudBlobClient.GetContainerReference(containerName);
-            var cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(blobName);
-
-
 
             using (var fileStream = file.OpenReadStream())
             {
-                cloudBlockBlob.Properties.ContentType = file.ContentType;
-                await cloudBlockBlob.UploadFromStreamAsync(fileStream);
 
-
-
-                var type = await GetType(extension);
-
-
-                if (type.Type == "mp4")
+                var request = new UploadPartRequest
                 {
+                    InputStream = fileStream,
+                    BucketName = $"{bucketName}/uploads",
+                    Key = $"{bucketName}/uploads/{fileName}"
+                };
 
-                    StorageCredentials storageCredentials = new StorageCredentials(_config["StorageAccountName"], _config["StorageAccountKey"]);
+                var type = GetType(extension);
 
-                    await _client.InitializeAsync();
-
-                    var asset = await _client.CreateFromBlobAsync(cloudBlockBlob, storageCredentials, CancellationToken.None);
-
-
-                    List<Asset> assets = new List<Asset>();
-
-                    assets.Add(asset);
-
-                    JobTask task = new JobTask();
-
-                    task.Name = "Adaptive Streaming";
-                    task.Configuration = "Adaptive Streaming";
-                    task.MediaProcessorId = "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56";
-                    task.TaskBody = "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(1)</outputAsset></taskBody>";
-                    List<JobTask> tasks = new List<JobTask>();
-
-                    tasks.Add(task);
+                var response = await _s3Client.UploadPartAsync(request);
 
 
-                    var job = new Job("Media Encoder Standard", assets.ToArray(), tasks.ToArray());
-
-
-                    var job2 = await _client.CreateJob(job);
-
-                    var outputAsset = await _client.GetJobOutputAsset(job2.Id);
-
-                    var policy = await _client.CreateAccessPolicy("DownloadPolicy", 30000000, 1);
-
-                    var locator = await _client.CreateLocator(policy.Id, outputAsset.First().Id, DateTime.Now, 2);
-
-
-                    var url = $"{locator.Path}{asset.Name.Replace(".mp4", ".ism")}/manifest";
-
-
-                    if (!string.IsNullOrWhiteSpace(url))
-                    {
-
-
-
-                        var media = new Media
-                        {
-                            MediaUrl = url,
-                            MediaTypeId = type.MediaTypeId,
-                            CreatedDate = DateTime.UtcNow,
-                        };
-
-                        await Add(media);
-
-                        return media;
-                    }
-
-                    return new Media();
-                }
-                else
+                var media = new Media
                 {
+                    MediaUrl = $"{bucketName}/uploads/{fileName}",
+                    MediaTypeId = type.Id,
+                    CreatedDate = DateTime.UtcNow,
+                };
 
-                    var media = new Media
-                    {
-                        MediaUrl = cloudBlockBlob.Uri.AbsoluteUri,
-                        MediaTypeId = type.MediaTypeId,
-                        CreatedDate = DateTime.UtcNow,
-                    };
+                await Add(media);
 
-                    await Add(media);
-
-                    return media;
-                }
-            }  
+                return media;
+            }
         }
-
     }
+
 }
+
