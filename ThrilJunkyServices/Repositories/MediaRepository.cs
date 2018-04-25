@@ -112,17 +112,22 @@ namespace ThrilJunkyServices.Repositories
             using (var fileStream = file.OpenReadStream())
             {
 
-                var request = new UploadPartRequest
+                var request = new PutObjectRequest
                 {
                     InputStream = fileStream,
                     BucketName = "thriljunky",
                     Key = $"uploads/{fileName}",
-
                 };
+
 
                 var type = GetType(extension);
 
-                var response = await _s3Client.UploadPartAsync(request);
+                if(extension == ".mp4"){
+                    request.ContentType = "video/mp4";
+                }
+
+
+                var response = await _s3Client.PutObjectAsync(request);
 
 
                 var media = new Media
