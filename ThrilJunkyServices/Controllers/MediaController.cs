@@ -76,7 +76,7 @@ namespace ThrilJunkyServices.Controllers
      
          
 
-            var media = await mediaRepository.Upload(config["ConnectionStrings:BucketName"],
+            var media = await mediaRepository.Upload(config["AWS:Profile"],
                                                      $"{DateTime.Now.ToString("ddMMyyyyHHMMss")}.{extension}", extension, file);
 
             return media;

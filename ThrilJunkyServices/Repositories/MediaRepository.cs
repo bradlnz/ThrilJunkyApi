@@ -31,14 +31,16 @@ namespace ThrilJunkyServices.Repositories
         private readonly IConfiguration _config;
         private readonly IAzureMediaServiceClient _client;
         private IHostingEnvironment _hostingEnvironment;
-        private AmazonS3Client _s3Client = new AmazonS3Client(RegionEndpoint.USEast1);
+        private IAmazonS3 _s3Client { get; set; }
+
         private static string _bucketSubdirectory = String.Empty;
 
 
-        public MediaRepository(IConfiguration config, IHostingEnvironment environment)
+        public MediaRepository(IConfiguration config, IHostingEnvironment environment, IAmazonS3 client)
         {
             _config = config;
             _hostingEnvironment = environment;
+            _s3Client = client;
         }
 
         public IDatabase Connection
@@ -113,8 +115,9 @@ namespace ThrilJunkyServices.Repositories
                 var request = new UploadPartRequest
                 {
                     InputStream = fileStream,
-                    BucketName = $"{bucketName}/uploads",
-                    Key = $"{bucketName}/uploads/{fileName}"
+                    BucketName = "thriljunky",
+                    Key = $"uploads/{fileName}",
+
                 };
 
                 var type = GetType(extension);

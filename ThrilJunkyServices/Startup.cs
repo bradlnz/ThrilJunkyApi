@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Amazon.S3;
 using Azure.MediaServices.Core;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -56,6 +57,15 @@ namespace ThrilJunkyServices
             services.AddSingleton<IVoteRepository, VoteRepository>();
 
             services.AddSingleton<IReportingRepository, ReportingRepository>();
+
+            Environment.SetEnvironmentVariable("AWS_ACCESS_KEY_ID", Configuration["AWS:AccessKey"]);
+            Environment.SetEnvironmentVariable("AWS_SECRET_ACCESS_KEY", Configuration["AWS:SecretKey"]);
+            Environment.SetEnvironmentVariable("AWS_REGION", Configuration["AWS:Region"]);
+
+            services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
+
+            services.AddAWSService<IAmazonS3>();
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
