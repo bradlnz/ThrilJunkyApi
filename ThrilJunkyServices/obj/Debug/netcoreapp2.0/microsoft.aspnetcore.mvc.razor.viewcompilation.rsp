@@ -1,5 +1,5 @@
-/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices
+/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices
 --output-path=obj/Debug/netcoreapp2.0/
 --application-name=ThrilJunkyServices
---content-root=/Users/bradlietz/Projects/ThrilJunkyServices/ThrilJunkyServices
---file=
+--content-root=/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices
+--file=/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/Views/Home/index.cshtml

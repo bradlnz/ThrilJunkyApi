@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{A70505EF-7959-48B7-8AA9-15DDD8FB4CCA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Repositories/MediaRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/appsettings.json">
     <Files>
-      <File FileName="ThrilJunkyServices/Startup.cs" Line="75" Column="14" />
+      <File FileName="ThrilJunkyServices/Startup.cs" Line="73" Column="61" />
       <File FileName="ThrilJunkyServices/Program.cs" Line="19" Column="9" />
       <File FileName="ThrilJunkyServices/appsettings.Development.json" Line="1" Column="1" />
-      <File FileName="ThrilJunkyServices/appsettings.json" Line="16" Column="33" />
+      <File FileName="ThrilJunkyServices/appsettings.json" Line="38" Column="1" />
       <File FileName="ThrilJunkyServices/Properties/launchSettings.json" Line="14" Column="22" />
       <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="92" Column="49" />
       <File FileName="ThrilJunkyServices/Repositories/IPostRepository.cs" Line="10" Column="34" />
@@ -20,7 +20,7 @@
       <File FileName="ThrilJunkyServices/Models/LocationType.cs" Line="16" Column="1" />
       <File FileName="ThrilJunkyServices/Models/Tag.cs" Line="15" Column="9" />
       <File FileName="ThrilJunkyServices/Controllers/MediaController.cs" Line="48" Column="9" />
-      <File FileName="ThrilJunkyServices/Repositories/MediaRepository.cs" Line="122" Column="20" />
+      <File FileName="ThrilJunkyServices/Repositories/MediaRepository.cs" Line="129" Column="17" />
       <File FileName="ThrilJunkyServices/Repositories/ILocationRepository.cs" Line="10" Column="4" />
       <File FileName="ThrilJunkyServices/ViewModels/UploadResult.cs" Line="9" Column="10" />
       <File FileName="ThrilJunkyServices/Repositories/IMediaRepository.cs" Line="16" Column="21" />
@@ -40,7 +40,7 @@
       <File FileName="ThrilJunkyServices/Repositories/IReportingRepository.cs" Line="12" Column="51" />
       <File FileName="ThrilJunkyServices/Models/ReportedItem.cs" Line="6" Column="2" />
       <File FileName="ThrilJunkyServices/Repositories/ReportingRepository.cs" Line="23" Column="10" />
-      <File FileName="ThrilJunkyServices/Dockerfile" Line="3" Column="9" />
+      <File FileName="ThrilJunkyServices/Dockerfile" Line="14" Column="1" />
       <File FileName="ThrilJunkyServices/Controllers/HomeController.cs" Line="15" Column="22" />
       <File FileName="ThrilJunkyServices/README.md" Line="1" Column="1" />
       <File FileName="ThrilJunkyServices/Views/Home/index.cshtml" Line="1" Column="1" />
