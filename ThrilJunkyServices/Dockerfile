@@ -1,8 +1,8 @@
 FROM microsoft/dotnet
 
-COPY . /
+COPY . /app
 
-WORKDIR /
+WORKDIR /app
 
 RUN ["dotnet", "restore"]
 
