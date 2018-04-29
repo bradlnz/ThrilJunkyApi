@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{A70505EF-7959-48B7-8AA9-15DDD8FB4CCA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/appsettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/Controllers/AccountController.cs">
     <Files>
       <File FileName="ThrilJunkyServices/Startup.cs" Line="73" Column="61" />
       <File FileName="ThrilJunkyServices/Program.cs" Line="19" Column="9" />
@@ -8,7 +8,7 @@
       <File FileName="ThrilJunkyServices/Properties/launchSettings.json" Line="14" Column="22" />
       <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="92" Column="49" />
       <File FileName="ThrilJunkyServices/Repositories/IPostRepository.cs" Line="10" Column="34" />
-      <File FileName="ThrilJunkyServices/Repositories/PostRepository.cs" Line="65" Column="1" />
+      <File FileName="ThrilJunkyServices/Repositories/PostRepository.cs" Line="63" Column="48" />
       <File FileName="ThrilJunkyServices/Models/Post.cs" Line="41" Column="9" />
       <File FileName="ThrilJunkyServices/Models/Hint.cs" Line="24" Column="17" />
       <File FileName="ThrilJunkyServices/Models/MediaType.cs" Line="11" Column="9" />
@@ -29,9 +29,9 @@
       <File FileName="ThrilJunkyServices/Repositories/TagRepository.cs" Line="25" Column="10" />
       <File FileName="ThrilJunkyServices/Controllers/LocationController.cs" Line="19" Column="9" />
       <File FileName="ThrilJunkyServices/Controllers/TagController.cs" Line="76" Column="6" />
-      <File FileName="ThrilJunkyServices/Controllers/AccountController.cs" Line="1" Column="1" />
+      <File FileName="ThrilJunkyServices/Controllers/AccountController.cs" Line="88" Column="9" />
       <File FileName="ThrilJunkyServices/Repositories/IUserRepository.cs" Line="11" Column="30" />
-      <File FileName="ThrilJunkyServices/Repositories/UserRepository.cs" Line="39" Column="10" />
+      <File FileName="ThrilJunkyServices/Repositories/UserRepository.cs" Line="60" Column="10" />
       <File FileName="ThrilJunkyServices/Controllers/HintController.cs" Line="59" Column="39" />
       <File FileName="ThrilJunkyServices/Controllers/UserController.cs" Line="37" Column="38" />
       <File FileName="ThrilJunkyServices/Repositories/VoteRepository.cs" Line="77" Column="10" />

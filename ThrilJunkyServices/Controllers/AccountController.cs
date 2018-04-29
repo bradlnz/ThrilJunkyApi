@@ -26,6 +26,7 @@ namespace ThrilJunkyServices.Controllers
             UserRepository = _UserRepository;
         }
 
+
         public async Task<Result> Login([FromBody] UserModel model)
         {
             var nvc = new List<KeyValuePair<string, string>>();
@@ -81,6 +82,19 @@ namespace ThrilJunkyServices.Controllers
 
                 var regresult = JsonConvert.DeserializeObject<RegResult>(result);
 
+                try {
+                    
+                    var user = UserRepository.GetItem(newreg.Username);
+
+                    user.MediaId = 329;
+
+                    UserRepository.Modify(user);
+
+  
+                } catch(Exception Ex){
+                    
+                }
+              
                 return regresult;
             }
         }
