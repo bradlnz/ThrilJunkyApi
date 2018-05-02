@@ -40,11 +40,26 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
+        public void AddOrUpdateBucket(Bucket bucket)
+        {
+
+            using (IDatabase db = Connection)
+            {
+                db.BeginTransaction();
+                //Your CRUD operation here
+
+                db.Save<Bucket>(bucket);
+
+
+                db.CompleteTransaction();
+            }
+        }
+
         public List<Post> GetAll()
         {
             using (IDatabase db = Connection)
             {
-                return db.Fetch<Post>("SELECT * FROM Post WHERE IsDeleted IS NULL OR IsDeleted = 0 AND IsFlagged = 0 OR IsFlagged IS NULL");
+                return db.Fetch<Post>("SELECT * FROM Post");
             }
         }
 
@@ -52,7 +67,22 @@ namespace ThrilJunkyServices.Repositories
         {
             using(IDatabase db = Connection)
             {
-                return db.Fetch<Post>($"SELECT * FROM Post WHERE userId = '{userId}' WHERE IsDeleted IS NULL OR IsDeleted = 0 AND IsFlagged = 0 OR IsFlagged IS NULL");
+                return db.Fetch<Post>($"SELECT * FROM Post WHERE userId = '{userId}'");
+            }
+        }
+
+        public List<Post> GetAllByUserIdBucket(string userId)
+        {
+            using (IDatabase db = Connection)
+            {
+                return db.Fetch<Post>($"SELECT * FROM Post WHERE PostId IN(SELECT PostId FROM Bucket WHERE userId='{userId}' AND IsDeleted = 0)");
+            }
+        }
+        public List<Bucket> GetBucketById(int postId, string userId)
+        {
+            using (IDatabase db = Connection)
+            {
+                return db.Fetch<Bucket>($"SELECT * FROM Bucket WHERE userId = '{userId}' AND PostId ='{postId}'");
             }
         }
 
@@ -60,7 +90,9 @@ namespace ThrilJunkyServices.Repositories
         {
             using(IDatabase db = Connection)
             {
-                return db.Fetch<Post>($"SELECT p.*, l.* FROM Post p INNER JOIN Location l on l.LocationId = p.LocationId WHERE dbo.GetDistanceBetween({latitude}, {longitude}, l.latitude, l.longitude) <= {radius} IsDeleted IS NULL OR IsDeleted = 0 AND IsFlagged = 0 OR IsFlagged IS NULL");
+                var posts = db.Fetch<Post>($"SELECT p.*, l.* FROM Post p INNER JOIN Location l on l.LocationId = p.LocationId WHERE dbo.GetDistanceBetween({latitude}, {longitude}, l.latitude, l.longitude) <= {radius}");
+
+                return posts;
             }
         }
 

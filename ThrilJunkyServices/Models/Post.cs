@@ -28,6 +28,8 @@ namespace ThrilJunkyServices.Models
         //check if flagged - Set by ADMIN
         public bool? IsFlagged { get; set; }
 
+        public bool? IsDeleted { get; set; } = false;
+
         [Ignore]
         public string MediaUrl { get; set; }
 
@@ -53,5 +55,6 @@ namespace ThrilJunkyServices.Models
 
         [Ignore]
         public float Longitude { get; set; }
+
     }
 }

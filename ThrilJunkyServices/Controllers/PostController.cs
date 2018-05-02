@@ -37,12 +37,11 @@ namespace ThrilJunkyServices.Controllers
         }
 
 
-
         [HttpPost]
         [Route("GetAllByLocationOrderByCreatedDate")]
         public IActionResult GetAllByLocationOrderByCreatedDate([FromBody] LocationSearch item)
         {
-            var items = postRepository.GetAllByLocationOrderByCreatedDate(item.lat, item.lng, item.radius);
+            var items = postRepository.GetAllByLocationOrderByCreatedDate(item.lat, item.lng, item.radius).Where(v => v.IsDeleted == false);
 
             foreach(var it in items)
             {
@@ -120,7 +119,7 @@ namespace ThrilJunkyServices.Controllers
         [Route("GetAllByUserId")]
         public IActionResult GetAllByUserId([FromBody] UserSearch item)
         {
-            var items = postRepository.GetAllByUserId(item.userId);
+            var items = postRepository.GetAllByUserId(item.userId).Where(v => v.IsDeleted == false);
 
             foreach(var it in items)
             {
@@ -168,6 +167,7 @@ namespace ThrilJunkyServices.Controllers
             return Ok(item);
         }
 
+     
 
         [HttpPost]
         [Route("ReportItem")]
