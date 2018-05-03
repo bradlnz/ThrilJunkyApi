@@ -123,19 +123,28 @@ namespace ThrilJunkyServices.Controllers
 
             foreach(var it in items)
             {
-               var media = mediaRepository.GetByID(it.MediaId);
+                if (it.MediaId > 0)
+                {
+                    var media = mediaRepository.GetByID(it.MediaId);
 
-                it.MediaUrl = media.MediaUrl;
+                    if (media != null)
+                        it.MediaUrl = media.MediaUrl;
 
-                var user = userRepository.GetAll().FirstOrDefault(a => a.Id == it.UserId);
+                    var user = userRepository.GetAll().FirstOrDefault(a => a.Id == it.UserId);
 
-                if(user != null)
-                    it.Username = user.UserName;
+                    if (user != null)
+                        it.Username = user.UserName;
 
-                var loc = locationRepository.GetAll().FirstOrDefault(a => a.LocationId == it.LocationId);
-                
-                if(loc != null)
-                it.Name = loc.Name;
+                    var loc = locationRepository.GetAll().FirstOrDefault(a => a.LocationId == it.LocationId);
+
+                    if (loc != null)
+                        it.Name = loc.Name;
+                } 
+
+                if(it.MediaUrl == null)
+                {
+                    it.MediaUrl = string.Empty;
+                }
             }
 
           

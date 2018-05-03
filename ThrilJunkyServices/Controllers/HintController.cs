@@ -52,7 +52,7 @@ namespace ThrilJunkyServices.Controllers
 
         [HttpGet]
         [Route("GetAllByPostId")]
-        public List<Hint> GetAllByPostId(int id)
+        public List<Hint> GetAllByPostId(int id, string userId)
         {
             var posts = hintRepository.GetAllByPostId(id).OrderBy(a => a.Likes?.Count());
 
@@ -76,6 +76,11 @@ namespace ThrilJunkyServices.Controllers
                 post.Likes = voteRepository.GetAll().Where(a => a.VoteTypeId == 1 && a.HintId == post.HintId).ToList();
 
                 post.Dislikes = voteRepository.GetAll().Where(a => a.VoteTypeId == 2 && a.HintId == post.HintId).ToList();
+
+                var vote2 = voteRepository.GetAll().Where(a => a.HintId == post.HintId && a.UserId == userId).FirstOrDefault();
+
+                if(vote2 != null)
+                post.HintColor = vote2.VoteTypeId;
             }
 
             return posts.ToList();

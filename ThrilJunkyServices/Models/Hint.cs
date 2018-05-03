@@ -32,5 +32,8 @@ namespace ThrilJunkyServices.Models
 
         [Ignore]
         public List<Vote> Dislikes { get; set; }
+
+        [Ignore]
+        public int HintColor { get; set; }
     }
 }

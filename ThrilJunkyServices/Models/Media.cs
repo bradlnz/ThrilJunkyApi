@@ -12,7 +12,7 @@ namespace ThrilJunkyServices.Models
         //Reference to Media Type 
         public int MediaTypeId { get; set; }
 
-        public string MediaUrl { get; set; }
+        public string MediaUrl { get; set; } = string.Empty;
 
         public DateTime CreatedDate { get; set; }
     }
