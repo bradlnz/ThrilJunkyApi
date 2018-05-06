@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "aaa4c973c5fd557d00059ec25e2564d17cf17b61"
+    "signature": "cf1335a900a571d775c47058840ce833737bd14c"
   },
   "compilationOptions": {
     "defines": [
@@ -31,8 +31,8 @@
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.1",
           "Microsoft.NETCore.App": "2.0.0",
-          "Microsoft.WindowsAzure.SDK": "2.9.0",
-          "NPoco": "3.9.3"
+          "NPoco": "3.9.3",
+          "RestSharp": "106.2.2"
         },
         "runtime": {
           "ThrilJunkyServices.dll": {}
@@ -2415,20 +2415,6 @@
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "Microsoft.WindowsAzure.SDK/2.9.0": {
-        "runtime": {
-          "lib/Microsoft.WindowsAzure.Diagnostics.dll": {},
-          "lib/Microsoft.WindowsAzure.ServiceRuntime.dll": {},
-          "lib/WindowsAzureEventSource.dll": {},
-          "lib/WindowsAzureTelemetryEvents.dll": {}
-        },
-        "compile": {
-          "lib/Microsoft.WindowsAzure.Diagnostics.dll": {},
-          "lib/Microsoft.WindowsAzure.ServiceRuntime.dll": {},
-          "lib/WindowsAzureEventSource.dll": {},
-          "lib/WindowsAzureTelemetryEvents.dll": {}
-        }
-      },
       "Newtonsoft.Json/10.0.3": {
         "dependencies": {
           "Microsoft.CSharp": "4.4.0",
@@ -2515,6 +2501,14 @@
         },
         "compile": {
           "lib/netstandard1.0/Remotion.Linq.dll": {}
+        }
+      },
+      "RestSharp/106.2.2": {
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/RestSharp.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -5486,13 +5480,6 @@
       "path": "microsoft.win32.registry/4.4.0",
       "hashPath": "microsoft.win32.registry.4.4.0.nupkg.sha512"
     },
-    "Microsoft.WindowsAzure.SDK/2.9.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-DddpLvVtIfg/1xjHvuRNOGkwUrxB5/w37OzNLMZ6o0svaT7BE0uw6XWjjvY0V68I6JoojcrV+QXo5AgIhu9SMA==",
-      "path": "microsoft.windowsazure.sdk/2.9.0",
-      "hashPath": "microsoft.windowsazure.sdk.2.9.0.nupkg.sha512"
-    },
     "Newtonsoft.Json/10.0.3": {
       "type": "package",
       "serviceable": true,
@@ -5522,6 +5509,13 @@
       "path": "remotion.linq/2.1.1",
       "hashPath": "remotion.linq.2.1.1.nupkg.sha512",
       "runtimeStoreManifestName": "aspnetcore-store-2.0.0-linux-x64.xml;aspnetcore-store-2.0.0-osx-x64.xml;aspnetcore-store-2.0.0-win7-x64.xml;aspnetcore-store-2.0.0-win7-x86.xml"
+    },
+    "RestSharp/106.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PEz5Wy6W7phha9pvvxmIntYb2tQTvWwm4G0JlOMFApBtzNfFLxLqJxhZG7Fd+78JJvyRiqGGQtjtW6Hc86PTag==",
+      "path": "restsharp/106.2.2",
+      "hashPath": "restsharp.106.2.2.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

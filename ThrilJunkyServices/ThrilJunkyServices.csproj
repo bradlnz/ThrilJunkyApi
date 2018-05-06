@@ -8,6 +8,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,11 +16,11 @@
     <PackageReference Include="NPoco" Version="3.9.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.1" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.3.0" />
-    <PackageReference Include="Microsoft.WindowsAzure.SDK" Version="2.9.0" />
     <PackageReference Include="Azure.MediaServices.Core" Version="0.0.6" />
     <PackageReference Include="AWSSDK.Core" Version="3.3.22" />
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.5" />
     <PackageReference Include="AWSSDK.S3" Version="3.3.18.1" />
+    <PackageReference Include="RestSharp" Version="106.2.2" />
   </ItemGroup>
   <ItemGroup>
     
@@ -29,5 +30,10 @@
 
   <ItemGroup>
     <None Remove="Dockerfile" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="coconut.conf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

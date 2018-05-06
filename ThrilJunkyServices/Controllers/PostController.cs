@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,8 +19,8 @@ namespace ThrilJunkyServices.Controllers
         private readonly ILocationRepository locationRepository;
         private readonly IVoteRepository voteRepository;
         private readonly IReportingRepository reportingRepository;
-
-        public PostController(IPostRepository _postRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository, IVoteRepository _voteRepository, IReportingRepository _reportingRepository)
+        private readonly ITagRepository tagRepository;
+        public PostController(IPostRepository _postRepository, ITagRepository _tagRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository, IVoteRepository _voteRepository, IReportingRepository _reportingRepository)
         {
             postRepository = _postRepository;
             mediaRepository = _mediaRepository;
@@ -27,6 +28,7 @@ namespace ThrilJunkyServices.Controllers
             locationRepository = _locationRepository;
             voteRepository = _voteRepository;
             reportingRepository = _reportingRepository;
+            tagRepository = _tagRepository;
         }
 
         [HttpGet]
@@ -65,6 +67,20 @@ namespace ThrilJunkyServices.Controllers
                     }
                 }
 
+                var postTags = tagRepository.GetAllPostTags().Where(a => a.PostId == it.PostId);
+
+                it.Tags = new List<Tag>();
+
+                if(postTags.Any()){
+                    foreach(var tag in postTags){
+                        var t = tagRepository.GetByID(tag.TagId);
+
+                        if(t != null){
+                            it.Tags.Add(t);
+                        }
+
+                    }
+                }
                 var vote = voteRepository.GetByID(it.PostId, item.UserId);
 
                 if(vote != null)

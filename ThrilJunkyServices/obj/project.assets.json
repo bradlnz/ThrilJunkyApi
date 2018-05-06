@@ -2767,21 +2767,6 @@
           }
         }
       },
-      "Microsoft.WindowsAzure.SDK/2.9.0": {
-        "type": "package",
-        "compile": {
-          "lib/Microsoft.WindowsAzure.Diagnostics.dll": {},
-          "lib/Microsoft.WindowsAzure.ServiceRuntime.dll": {},
-          "lib/WindowsAzureEventSource.dll": {},
-          "lib/WindowsAzureTelemetryEvents.dll": {}
-        },
-        "runtime": {
-          "lib/Microsoft.WindowsAzure.Diagnostics.dll": {},
-          "lib/Microsoft.WindowsAzure.ServiceRuntime.dll": {},
-          "lib/WindowsAzureEventSource.dll": {},
-          "lib/WindowsAzureTelemetryEvents.dll": {}
-        }
-      },
       "NETStandard.Library/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -2887,6 +2872,15 @@
         },
         "runtime": {
           "lib/netstandard1.0/Remotion.Linq.dll": {}
+        }
+      },
+      "RestSharp/106.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -7731,19 +7725,6 @@
         "version.txt"
       ]
     },
-    "Microsoft.WindowsAzure.SDK/2.9.0": {
-      "sha512": "DddpLvVtIfg/1xjHvuRNOGkwUrxB5/w37OzNLMZ6o0svaT7BE0uw6XWjjvY0V68I6JoojcrV+QXo5AgIhu9SMA==",
-      "type": "package",
-      "path": "microsoft.windowsazure.sdk/2.9.0",
-      "files": [
-        "lib/Microsoft.WindowsAzure.Diagnostics.dll",
-        "lib/Microsoft.WindowsAzure.ServiceRuntime.dll",
-        "lib/WindowsAzureEventSource.dll",
-        "lib/WindowsAzureTelemetryEvents.dll",
-        "microsoft.windowsazure.sdk.2.9.0.nupkg.sha512",
-        "microsoft.windowsazure.sdk.nuspec"
-      ]
-    },
     "NETStandard.Library/2.0.0": {
       "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
@@ -7942,6 +7923,17 @@
         "lib/netstandard1.0/Remotion.Linq.xml",
         "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.dll",
         "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.xml"
+      ]
+    },
+    "RestSharp/106.2.2": {
+      "sha512": "PEz5Wy6W7phha9pvvxmIntYb2tQTvWwm4G0JlOMFApBtzNfFLxLqJxhZG7Fd+78JJvyRiqGGQtjtW6Hc86PTag==",
+      "type": "package",
+      "path": "restsharp/106.2.2",
+      "files": [
+        "lib/net452/RestSharp.dll",
+        "lib/netstandard2.0/RestSharp.dll",
+        "restsharp.106.2.2.nupkg.sha512",
+        "restsharp.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -13081,8 +13073,8 @@
       "Microsoft.AspNetCore.All >= 2.0.5",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Microsoft.WindowsAzure.SDK >= 2.9.0",
-      "NPoco >= 3.9.3"
+      "NPoco >= 3.9.3",
+      "RestSharp >= 106.2.2"
     ]
   },
   "packageFolders": {
@@ -13146,10 +13138,6 @@
             "target": "Package",
             "version": "2.3.0"
           },
-          "Microsoft.WindowsAzure.SDK": {
-            "target": "Package",
-            "version": "2.9.0"
-          },
           "Azure.MediaServices.Core": {
             "target": "Package",
             "version": "0.0.6"
@@ -13165,6 +13153,10 @@
           "AWSSDK.S3": {
             "target": "Package",
             "version": "3.3.18.1"
+          },
+          "RestSharp": {
+            "target": "Package",
+            "version": "106.2.2"
           }
         },
         "imports": [
@@ -13174,17 +13166,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.WindowsAzure.SDK 2.9.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.WindowsAzure.SDK",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    }
-  ]
+  }
 }

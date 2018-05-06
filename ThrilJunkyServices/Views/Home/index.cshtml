@@ -1,1 +1,54 @@
-Endpoint
+﻿@model ThrilJunkyServices.ViewModels.PostItemViewModel
+
+<!DOCTYPE html>
+    <html>
+      <head>
+        
+        <!-- End Facebook Pixel Code -->
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:300,400,700' rel='stylesheet' type='text/css'>
+
+        
+        <link rel="stylesheet" href="/style.css"> <!-- Resource style -->    
+       
+        <title>@Model.Location.Name </title>
+          <meta property="og:url"                content="/Home/@Model.Post.PostId" />
+          <meta property="og:type"               content="place" />
+          <meta property="og:title"              content="@Model.Location.Address" />
+          <meta property="og:description"        content="@Model.Location.Name" />
+          <meta property="og:image"              content="@Model.Image" />
+          <meta property="place:location:latitude"  content="@Model.Location.Latitude" /> 
+          <meta property="place:location:longitude" content="@Model.Location.Longitude" />
+       
+    
+
+      </head>
+      <body>
+     
+        <div class="banner">
+            <a id="DownloadLink">
+                <div class="UserProfileImage"><img src="@Model.UserProfileImage"/></div>
+                <div class="bannerText"><p>@Model.Username posted at @Model.Location.Name</p></div>
+               
+            </a>
+            <a style="color: #000000; font-size: 14px;">Download ThrilJunky from the app store</a>
+        </div>
+        
+        <section id="cd-intro">
+            <div id="cd-intro-background">
+                <video style="width: 100%; height: 350px; margin-top: 30px; object-fit: cover;" controls="controls" autoplay="autoplay" loop="loop" muted="muted">
+                 <source src="https://@Model.Media.MediaUrl" type="video/mp4"/>
+                  <source src="movie.ogg" type="video/ogg"/>
+                Your browser does not support the video tag.
+                </video>
+            </div>
+     
+        </section> <!-- #cd-intro -->
+
+     
+        
+      </body>
+      
+    </html>

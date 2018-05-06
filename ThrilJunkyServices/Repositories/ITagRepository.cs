@@ -9,6 +9,7 @@ namespace ThrilJunkyServices.Repositories
     {
         Task<Tag> Add(Tag tag);
         List<Tag> GetAll();
+        List<PostTag> GetAllPostTags();
         Tag GetByID(int id);
         Task AddPostTag(PostTag postTag);
     }

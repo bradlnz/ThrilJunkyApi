@@ -45,6 +45,9 @@ namespace ThrilJunkyServices.Models
         public List<Vote> Votes { get; set; }
 
         [Ignore]
+        public List<Tag> Tags { get; set; }
+
+        [Ignore]
         public List<ReportedItem> ReportedItems { get; set; }
 
         [Ignore]

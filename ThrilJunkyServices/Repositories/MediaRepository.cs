@@ -21,6 +21,7 @@ using Amazon.S3;
 using Amazon;
 using Amazon.S3.Transfer;
 using Amazon.S3.Model;
+using System.IO;
 
 namespace ThrilJunkyServices.Repositories
 {
@@ -102,6 +103,7 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
+
         public async Task<Media> Upload(
             string bucketName,
             string fileName,
@@ -111,6 +113,7 @@ namespace ThrilJunkyServices.Repositories
 
             using (var fileStream = file.OpenReadStream())
             {
+
 
                 var request = new PutObjectRequest
                 {
@@ -122,7 +125,8 @@ namespace ThrilJunkyServices.Repositories
 
                 var type = GetType(extension);
 
-                if(extension == ".mp4"){
+                if (extension == ".mp4")
+                {
                     request.ContentType = "video/mp4";
                 }
 
@@ -139,6 +143,26 @@ namespace ThrilJunkyServices.Repositories
 
                 await Add(media);
 
+                if (media.MediaUrl.EndsWith(".jpg", StringComparison.InvariantCulture) || media.MediaUrl.EndsWith(".png", StringComparison.InvariantCulture)) return media;
+                    try
+                    {
+
+                        var config = System.IO.File.ReadAllText("coconut.conf");
+           
+                        config = config.Replace("{PLACEHOLDER}", fileName.Replace(".mp4", ""));
+
+                        config = config.Replace("{MEDIAURL}", media.MediaUrl);
+
+                        Coconut.CoconutAPI coconut = new Coconut.CoconutAPI("k-f14ddfef86ef1a1f260063f5a1746eba");
+
+                        coconut.Submit(config);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        var err = ex.Message;
+                    }
+           
                 return media;
             }
         }

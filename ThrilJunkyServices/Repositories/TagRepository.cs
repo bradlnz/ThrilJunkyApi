@@ -67,6 +67,13 @@ namespace ThrilJunkyServices.Repositories
                 return db.Fetch<Tag>("SELECT * FROM Tag");
             }
         }
+        public List<PostTag> GetAllPostTags()
+        {
+            using (IDatabase db = Connection)
+            {
+                return db.Fetch<PostTag>("SELECT * FROM PostTag");
+            }
+        }
 
         public Tag GetByID(int id)
         {
