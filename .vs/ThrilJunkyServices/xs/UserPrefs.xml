@@ -1,21 +1,21 @@
 ﻿<Properties StartupConfiguration="{A70505EF-7959-48B7-8AA9-15DDD8FB4CCA}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/coconut.conf">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThrilJunkyServices/wwwroot/docs/privacy.html">
     <Files>
       <File FileName="ThrilJunkyServices/Startup.cs" Line="66" Column="22" />
       <File FileName="ThrilJunkyServices/Program.cs" Line="19" Column="9" />
       <File FileName="ThrilJunkyServices/appsettings.Development.json" Line="1" Column="1" />
-      <File FileName="ThrilJunkyServices/appsettings.json" Line="38" Column="1" />
+      <File FileName="ThrilJunkyServices/appsettings.json" Line="30" Column="93" />
       <File FileName="ThrilJunkyServices/Properties/launchSettings.json" Line="14" Column="22" />
-      <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="142" Column="19" />
-      <File FileName="ThrilJunkyServices/Repositories/IPostRepository.cs" Line="13" Column="17" />
-      <File FileName="ThrilJunkyServices/Repositories/PostRepository.cs" Line="103" Column="39" />
-      <File FileName="ThrilJunkyServices/Models/Post.cs" Line="5" Column="11" />
+      <File FileName="ThrilJunkyServices/Controllers/PostController.cs" Line="70" Column="16" />
+      <File FileName="ThrilJunkyServices/Repositories/IPostRepository.cs" Line="13" Column="14" />
+      <File FileName="ThrilJunkyServices/Repositories/PostRepository.cs" Line="66" Column="24" />
+      <File FileName="ThrilJunkyServices/Models/Post.cs" Line="9" Column="18" />
       <File FileName="ThrilJunkyServices/Models/Hint.cs" Line="24" Column="17" />
       <File FileName="ThrilJunkyServices/Models/MediaType.cs" Line="11" Column="9" />
       <File FileName="ThrilJunkyServices/Models/VoteType.cs" Line="11" Column="9" />
       <File FileName="ThrilJunkyServices/Models/Vote.cs" Line="8" Column="18" />
       <File FileName="ThrilJunkyServices/Models/VoteCategory.cs" Line="11" Column="9" />
-      <File FileName="ThrilJunkyServices/Models/User.cs" Line="7" Column="37" />
+      <File FileName="ThrilJunkyServices/Models/User.cs" Line="14" Column="45" />
       <File FileName="ThrilJunkyServices/Models/Bucket.cs" Line="18" Column="52" />
       <File FileName="ThrilJunkyServices/Models/LocationType.cs" Line="16" Column="1" />
       <File FileName="ThrilJunkyServices/Models/Tag.cs" Line="15" Column="9" />
@@ -29,9 +29,9 @@
       <File FileName="ThrilJunkyServices/Repositories/TagRepository.cs" Line="25" Column="10" />
       <File FileName="ThrilJunkyServices/Controllers/LocationController.cs" Line="19" Column="9" />
       <File FileName="ThrilJunkyServices/Controllers/TagController.cs" Line="59" Column="9" />
-      <File FileName="ThrilJunkyServices/Controllers/AccountController.cs" Line="88" Column="21" />
-      <File FileName="ThrilJunkyServices/Repositories/IUserRepository.cs" Line="11" Column="30" />
-      <File FileName="ThrilJunkyServices/Repositories/UserRepository.cs" Line="60" Column="10" />
+      <File FileName="ThrilJunkyServices/Controllers/AccountController.cs" Line="153" Column="53" />
+      <File FileName="ThrilJunkyServices/Repositories/IUserRepository.cs" Line="14" Column="54" />
+      <File FileName="ThrilJunkyServices/Repositories/UserRepository.cs" Line="13" Column="47" />
       <File FileName="ThrilJunkyServices/Controllers/HintController.cs" Line="59" Column="39" />
       <File FileName="ThrilJunkyServices/Controllers/UserController.cs" Line="37" Column="38" />
       <File FileName="ThrilJunkyServices/Repositories/VoteRepository.cs" Line="77" Column="10" />
@@ -41,17 +41,20 @@
       <File FileName="ThrilJunkyServices/Models/ReportedItem.cs" Line="9" Column="18" />
       <File FileName="ThrilJunkyServices/Repositories/ReportingRepository.cs" Line="23" Column="10" />
       <File FileName="ThrilJunkyServices/Dockerfile" Line="14" Column="1" />
-      <File FileName="ThrilJunkyServices/Controllers/HomeController.cs" Line="51" Column="13" />
+      <File FileName="ThrilJunkyServices/Controllers/HomeController.cs" Line="90" Column="15" />
       <File FileName="ThrilJunkyServices/README.md" Line="1" Column="1" />
       <File FileName="ThrilJunkyServices/Models/Location.cs" Line="13" Column="9" />
       <File FileName="ThrilJunkyServices/Controllers/BucketController.cs" Line="35" Column="50" />
       <File FileName="ThrilJunkyServices/Repositories/IVoteRepository.cs" Line="11" Column="16" />
       <File FileName="ThrilJunkyServices/Models/Media.cs" Line="12" Column="35" />
-      <File FileName="ThrilJunkyServices/Views/Home/index.cshtml" Line="40" Column="43" />
-      <File FileName="ThrilJunkyServices/ViewModels/PostItemViewModel.cs" Line="13" Column="38" />
-      <File FileName="ThrilJunkyServices/wwwroot/style.css" Line="17" Column="30" />
+      <File FileName="ThrilJunkyServices/Views/Home/index.cshtml" Line="33" Column="80" />
+      <File FileName="ThrilJunkyServices/ViewModels/PostItemViewModel.cs" Line="18" Column="29" />
       <File FileName="ThrilJunkyServices/CoconutAPI.cs" Line="45" Column="1" />
       <File FileName="ThrilJunkyServices/coconut.conf" Line="1" Column="1" />
+      <File FileName="ThrilJunkyServices/wwwroot/css/master.css" Line="41" Column="11" />
+      <File FileName="ThrilJunkyServices/wwwroot/css/cssreset.css" Line="1" Column="1" />
+      <File FileName="ThrilJunkyServices/wwwroot/docs/terms.html" Line="148" Column="8" />
+      <File FileName="ThrilJunkyServices/wwwroot/docs/privacy.html" Line="10" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -61,6 +64,9 @@
       <Breakpoint file="/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/Controllers/PostController.cs" relfile="ThrilJunkyServices/Controllers/PostController.cs" line="148" column="1" />
       <Breakpoint file="/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/Repositories/MediaRepository.cs" relfile="ThrilJunkyServices/Repositories/MediaRepository.cs" line="167" column="1" />
       <Breakpoint file="/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/CoconutAPI.cs" relfile="ThrilJunkyServices/CoconutAPI.cs" line="45" column="1" />
+      <Breakpoint file="/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/Controllers/AccountController.cs" relfile="ThrilJunkyServices/Controllers/AccountController.cs" line="197" column="1" />
+      <Breakpoint file="/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/Controllers/AccountController.cs" relfile="ThrilJunkyServices/Controllers/AccountController.cs" line="184" column="1" />
+      <Breakpoint file="/Users/bradlietz/Desktop/repo/ThrilJunkyServices/ThrilJunkyServices/Controllers/AccountController.cs" relfile="ThrilJunkyServices/Controllers/AccountController.cs" line="194" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

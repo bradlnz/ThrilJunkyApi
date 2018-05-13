@@ -1,19 +1,20 @@
 ﻿@model ThrilJunkyServices.ViewModels.PostItemViewModel
 
 <!DOCTYPE html>
-    <html>
-      <head>
-        
-        <!-- End Facebook Pixel Code -->
-        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href='https://fonts.googleapis.com/css?family=Montserrat:300,400,700' rel='stylesheet' type='text/css'>
+<html lang="en">
 
-        
-        <link rel="stylesheet" href="/style.css"> <!-- Resource style -->    
-       
-        <title>@Model.Location.Name </title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Card</title>
+
+  <link rel="stylesheet" href="/css/cssreset.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/master.css">
+
+
+          <title>@Model.Location.Name </title>
           <meta property="og:url"                content="/Home/@Model.Post.PostId" />
           <meta property="og:type"               content="place" />
           <meta property="og:title"              content="@Model.Location.Address" />
@@ -22,33 +23,72 @@
           <meta property="place:location:latitude"  content="@Model.Location.Latitude" /> 
           <meta property="place:location:longitude" content="@Model.Location.Longitude" />
        
-    
+</head>
 
-      </head>
-      <body>
-     
-        <div class="banner">
-            <a id="DownloadLink">
-                <div class="UserProfileImage"><img src="@Model.UserProfileImage"/></div>
-                <div class="bannerText"><p>@Model.Username posted at @Model.Location.Name</p></div>
-               
-            </a>
-            <a style="color: #000000; font-size: 14px;">Download ThrilJunky from the app store</a>
+<body>
+
+  <div id="nav">
+    <a href="#"><img src="/img/logo.jpg" alt="logo"></a>
+            <span style="position: relative;left: 73px;top: 7px; color: #52ecff;font-size: 16px;">ThrilJunky</span>
+              <span style="position: relative;left: -15px; top: 26px;color: #FFFFFF;font-size: 14px;">Adventure awaits</span>
+   <img style="position: fixed; top: 6px; right: 5px; width: 90px;" src="/img/apple.png" />
+  </div>
+
+  <div id="page-content">
+    <div class="video-wrapper">
+      <section id="display-content">
+        <video controls poster="@Model.Image">
+            <source src="https://@Model.Media.MediaUrl" type="video/mp4"/>
+          </video>
+      </section>
+    </div>
+
+
+    <section id="info-section">
+      <div class="container">
+        <div class="section-box">
+          <h4 class="section-title">
+              <span class="title-icon"><i class="fas fa-compass"></i></span>Place
+            </h4>
+          <div class="section-content">
+            <p id="placename" class="section-text">@Model.Location.Name</p><br/>
+                            <p class="section-text">(<a href="http://maps.apple.com/?q=@Model.Location.Latitude,@Model.Location.Longitude" target="_blank">Click here for map</a>)</p>
+          </div>
         </div>
-        
-        <section id="cd-intro">
-            <div id="cd-intro-background">
-                <video style="width: 100%; height: 350px; margin-top: 30px; object-fit: cover;" controls="controls" autoplay="autoplay" loop="loop" muted="muted">
-                 <source src="https://@Model.Media.MediaUrl" type="video/mp4"/>
-                  <source src="movie.ogg" type="video/ogg"/>
-                Your browser does not support the video tag.
-                </video>
-            </div>
-     
-        </section> <!-- #cd-intro -->
 
-     
-        
-      </body>
+        <div class="section-box">
+          <h4 class="section-title">
+              <span class="title-icon"><i class="fas fa-map-marker"></i></span>Address
+          </h4>
+          <div class="section-content">
+            <p class="section-text" id="address-name">@Model.Location.Address</p><br/>
+            <p class="section-text">(<a href="http://maps.apple.com/?q=@Model.Location.Latitude,@Model.Location.Longitude" target="_blank">Click here for map</a>)</p>
+          </div>
+        </div>
+        <div class="section-box">
+          <h4 class="section-title">
+              <span class="title-icon"><i class="far fa-user-circle"></i></span>Uploaded by
+            </h4>
+          <div class="section-content">
+                          
+            <p id="uploader-and-date" class="section-text">@Model.Username, @Model.Created</p>
+          </div>
+        </div>
+        <div class="section-box">
+          <h4 class="section-title">
+              <span class="title-icon"><i class="fas fa-tag"></i></span>Tags @Model.Post.Tags
+            </h4>
+          <div class="section-content">
+            <p id="category" class="section-text">@Model.Tags</p>
+          </div>
+        </div>
       
-    </html>
+      </div>
+    </section>
+
+
+  </div>
+
+</body>
+
+</html>

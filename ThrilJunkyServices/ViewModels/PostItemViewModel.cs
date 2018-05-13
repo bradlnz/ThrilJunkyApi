@@ -14,5 +14,7 @@ namespace ThrilJunkyServices.ViewModels
         public string UserProfileImage { get; set; }
         public string Username { get; set; }
         public string Image { get; set; }
+        public string Tags { get; set; }
+        public string Created { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using IdentityModel.Client;
@@ -9,6 +10,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using ThrilJunkyServices.Models;
 using ThrilJunkyServices.Repositories;
 
@@ -129,6 +132,87 @@ namespace ThrilJunkyServices.Controllers
                 }
             }
         }
+
+
+
+        [HttpGet]
+        public async Task ForgottenPassword(string email)
+        {
+
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                Random generator = new Random();
+
+                String r = generator.Next(0, 999999).ToString("D6");
+
+                //Send random 6 digit code
+                // Message
+                var msg = new SendGridMessage();
+                msg.Subject = "Reset Password";
+
+                msg.From = new EmailAddress("support@thriljunky.com");
+
+                msg.PlainTextContent = $"Your reset code is: {r}";
+                msg.AddTo(email);
+
+                // Send
+                var client = new SendGridClient(Configuration["Auth:SendGridApiKey"]);
+
+                var response = await client.SendEmailAsync(msg);
+
+          
+                try
+                {
+
+                    var user = UserRepository.GetAll().FirstOrDefault(a => a.Email == email);
+
+                    user.ResetCode = r;
+
+                    UserRepository.Modify(user);
+
+
+                }
+                catch (Exception Ex)
+                {
+
+                }
+            }
+        }
+
+        [HttpGet]
+        public async Task<string> ResetPassword(string resetCode, string password)
+        {
+            var user = await UserRepository.FindByResetCode(resetCode);
+
+            if(user != null){
+
+                using (var client = new HttpClient())
+                {
+            
+                    var res = await client.GetAsync($"{Configuration["Auth:Domain"]}/api/account/reset?email=" + user.Email + "&password="+ password);
+
+                    var result = await res.Content.ReadAsStringAsync();
+
+                    return "success";
+         
+                }
+               
+            }
+
+            return "fail";
+            //User inserts number 
+
+            //password reset token generated
+
+            //if user != null
+
+        
+            //Else
+        }
+
+       
+
+
 
         public class Token
         {

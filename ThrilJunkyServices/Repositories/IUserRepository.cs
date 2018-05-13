@@ -11,5 +11,6 @@ namespace ThrilJunkyServices.Repositories
         int Modify(User user);
         User GetItem(string username);
         User GetById(string id);
+        Task<User> FindByResetCode(string resetCode);
     }
 }

@@ -1,0 +1,183 @@
+/* WRITTEN BY DENNIS MAGNUSSON 2018 */
+/* https://www.fiverr.com/dennismagnusson */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+body {
+	font-family: "Montserrat", sans-serif;
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 650px;
+	min-width: 300px;
+	margin: 0 auto;
+	box-sizing: border-box;
+
+}
+
+#nav {
+	width: 100%;
+	height: 50px;
+	padding: 5px 0;
+	background: rgb(36, 138, 206);
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 3;
+	-webkit-box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.75);
+}
+
+#nav a {
+	display: block;
+	margin: 0 auto;
+	width: 50px;
+}
+
+#nav a img {
+	width: 50px;
+	height: 50px;
+	border-radius: 4px;
+    position: fixed;
+    left: 10px;
+}
+
+#page-content {
+	margin-top: 60px;
+	width: 100%;
+	height: auto;
+}
+
+#page-content .video-wrapper{
+	background-color: #000;
+	width: 100%;
+  
+	-webkit-box-shadow: 0px 0px 100px 21px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0px 0px 100px 21px rgba(0,0,0,0.6);
+	box-shadow: 0px 0px 100px 21px rgba(0,0,0,0.6);
+}
+
+#page-content #display-content {
+	max-width: 1066px;
+	margin: 0 auto;
+	min-width: 200px;
+	height: 600px;
+	position: relative;
+	background-color: #000;
+	z-index: 2;
+}
+
+#page-content #display-content video {
+	width: 100%;
+	height: 100%;
+}
+
+#page-content #display-content h1 {
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: 700;
+	font-size: 30px;
+	text-align: center;
+	position: fixed;
+	top: 38%;
+	left: 0;
+	right: 0;
+	text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+#page-content #info-section {
+	background: #fff;
+	z-index: 1;
+
+	margin-top: 0px;
+	padding: 50px 0 30px 0;
+}
+
+#page-content #info-section .section-box {
+	margin: 10px 0 40px 0;
+}
+
+#page-content #info-section .section-box .section-title {
+	font-size: 22px;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: rgb(36, 138, 206);
+}
+
+#page-content #info-section .section-box .section-title .title-icon {
+	margin-right: 6px;
+}
+
+#page-content #info-section .section-box .section-content {
+	margin-top: 16px;
+	margin-left: 28px;
+}
+
+#page-content #info-section .section-box .map {
+	margin-top: 16px;
+	margin-left: 0;
+}
+
+#page-content #info-section .section-box .map iframe {
+	min-width: 280px;
+}
+
+#page-content #info-section .section-box .section-content .phone-number {
+	text-decoration: none;
+	color: #000;
+}
+
+#page-content #info-section .section-box .section-content .photos-photo {
+	width: auto;
+	height: 80px;
+	border-radius: 5px;
+}
+
+#page-content #info-section .section-box .section-content .directions-button {
+	background-color: rgb(36, 138, 206);
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 20px;
+	margin-top: 10px;
+	width: 100%;
+	padding: 6px 0;
+	font-weight: 700;
+	transition: all .2s ease-in-out;
+}
+
+#page-content #info-section .section-box .section-content .directions-button:hover {
+	cursor: pointer;
+	background-color: rgb(6, 108, 176)
+	-webkit-box-shadow: 0px 0px 36px -10px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 36px -10px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 36px -10px rgba(0,0,0,0.75);
+
+}
+
+footer{
+	height: 60px;
+	background-color:#dbdbdb;
+}
+
+footer p{
+	text-align: center;
+	line-height: 60px;
+	color: #bcbcbc
+}
+
+
+@media screen and (max-width: 1060px) {
+	#page-content #display-content {
+		height: auto;
+	}
+}
+
+@media screen and (max-width: 680px) {
+	.container {
+		width: 100%;
+		padding: 0 8px;
+	}
+}

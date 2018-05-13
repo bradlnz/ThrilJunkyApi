@@ -27,6 +27,14 @@ namespace ThrilJunkyServices.Repositories
             }
         }
 
+        public async Task<User> FindByResetCode(string resetCode)
+        {
+            using (IDatabase db = Connection)
+            {
+                return await db.SingleAsync<User>($"SELECT * FROM [dbo].[AspNetUsers] WHERE ResetCode = '{resetCode}'");
+            }
+        }
+
         public List<User> GetAll()
         {
             using (IDatabase db = Connection)
@@ -55,9 +63,10 @@ namespace ThrilJunkyServices.Repositories
         {
             using (IDatabase db = Connection)
             {
-                return db.Execute($"UPDATE [dbo].[AspNetUsers] SET MediaId='{user.MediaId}' WHERE Id = '{user.Id}'");
+                return db.Execute($"UPDATE [dbo].[AspNetUsers] SET MediaId='{user.MediaId}', ResetCode='{user.ResetCode}' WHERE Id = '{user.Id}'");
             }
         }
 
+  
     }
 }

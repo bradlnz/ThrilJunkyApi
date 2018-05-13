@@ -10,5 +10,7 @@ namespace ThrilJunkyServices.Models
 
         [Ignore]
         public string MediaUrl { get; set; }
+
+        public string ResetCode { get; set; }
     }
 }
