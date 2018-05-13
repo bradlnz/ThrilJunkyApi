@@ -59,5 +59,8 @@ namespace ThrilJunkyServices.Models
         [Ignore]
         public float Longitude { get; set; }
 
+        [Ignore]
+        public int HintCount { get; set; } = 0;
+
     }
 }

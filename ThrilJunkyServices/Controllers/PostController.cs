@@ -20,7 +20,9 @@ namespace ThrilJunkyServices.Controllers
         private readonly IVoteRepository voteRepository;
         private readonly IReportingRepository reportingRepository;
         private readonly ITagRepository tagRepository;
-        public PostController(IPostRepository _postRepository, ITagRepository _tagRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository, IVoteRepository _voteRepository, IReportingRepository _reportingRepository)
+        private readonly IHintRepository hintRepository;
+
+        public PostController(IPostRepository _postRepository, ITagRepository _tagRepository, IMediaRepository _mediaRepository, IUserRepository _userRepository, ILocationRepository _locationRepository, IVoteRepository _voteRepository, IReportingRepository _reportingRepository, IHintRepository _hintRepository)
         {
             postRepository = _postRepository;
             mediaRepository = _mediaRepository;
@@ -29,6 +31,7 @@ namespace ThrilJunkyServices.Controllers
             voteRepository = _voteRepository;
             reportingRepository = _reportingRepository;
             tagRepository = _tagRepository;
+            hintRepository = _hintRepository;
         }
 
         [HttpGet]
@@ -66,6 +69,8 @@ namespace ThrilJunkyServices.Controllers
                         it.UserProfileImageUrl = media1.MediaUrl;
                     }
                 }
+
+                it.HintCount = hintRepository.GetAll().Count(a => a.PostId == it.PostId);
 
                 var postTags = tagRepository.GetAllPostTags().Where(a => a.PostId == it.PostId);
 
